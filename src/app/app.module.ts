@@ -16,9 +16,11 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
     SignUpComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [UserService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
