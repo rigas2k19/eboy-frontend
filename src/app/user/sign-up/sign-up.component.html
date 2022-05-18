@@ -1,1 +1,51 @@
-<p>sign-up works!</p>
+<h2>Sign Up</h2>
+<div class="col-md-6">
+  <form>
+    <div class="form-group">
+      <label for="uname">Username:</label><br>
+      <input type="text" [(ngModel)]="user.username" id="uname" name="uname"><br>
+    </div>
+
+    <div class="form-group">
+      <label for ="password">Password:</label><br>
+      <input type="text" [(ngModel)]="user.password" id="password" name="password"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="fname">First Name:</label><br>
+      <input type="text" [(ngModel)]="user.name" id="fname" name="fname"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="lname">Last Name:</label><br>
+      <input type="text" [(ngModel)]="user.lastname" id="lname" name="lname"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label><br>
+      <input type="text" [(ngModel)]="user.email" id="email" name="email"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number:</label><br>
+      <input type="text" [(ngModel)]="user.phone" id="phone" name="phone"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address:</label><br>
+      <input type="text" [(ngModel)]="user.address" id="address" name="address"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location:</label><br>
+      <input type="text" [(ngModel)]="user.location" id="location" name="location"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="afm">AFM:</label><br>
+      <input type="text" [(ngModel)]="user.afm" id="afm" name="afm"><br><br>
+    </div>
+
+    <button class="btn btn-success" (click)="addUser()" >Sign up</button>
+  </form>
+</div>

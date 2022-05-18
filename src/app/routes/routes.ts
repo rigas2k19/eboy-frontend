@@ -16,4 +16,9 @@ export const  appRoutes = [
   {
     path: 'signup',
     component: SignUpComponent
-  },];
+  },
+  {
+    path: 'delete',
+    component: DeleteComponent
+  },
+];
