@@ -1,0 +1,10 @@
+<p>delete works!</p>
+
+<ol>
+  <li *ngFor='let user of users'>
+    <a [routerLink]="['/users', user.username]">{{user.username}} </a>
+    <button class="button" (click)="deleteUser(user.username!)"> Delete</button>
+  </li>
+</ol>
+<router-outlet></router-outlet>
+
