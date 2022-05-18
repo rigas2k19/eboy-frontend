@@ -7,5 +7,5 @@ export class User {
   phone: string | undefined;
   address: string | undefined;
   location: string | undefined;
-  AFM: string | undefined;
+  afm: string | undefined;
 }

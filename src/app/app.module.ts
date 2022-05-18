@@ -8,17 +8,21 @@ import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import{appRoutes} from "./routes/routes";
 import { SignUpComponent } from './user/sign-up/sign-up.component';
+import {FormsModule} from "@angular/forms";
+import { DeleteComponent } from './user/delete/delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    SignUpComponent
+    SignUpComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [UserService, HttpClient],
   bootstrap: [AppComponent]
