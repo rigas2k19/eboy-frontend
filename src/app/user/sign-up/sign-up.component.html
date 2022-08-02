@@ -3,18 +3,22 @@
 <div class="col-md-6">
   <form>
     <div class="form-group">
-      <label for="uname">Username:</label><br>
-      <input type="text" [(ngModel)]="user.username" id="uname" name="uname"><br>
+      <label for="username">Username:</label><br>
+      <input type="text" [(ngModel)]="user.username" id="username" name="username" ><br>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ngModelGroup="passwords" #passwords="ngModelGroup" appCheckPassword>
       <label for ="password">Password:</label><br>
-      <input type="password" [(ngModel)]="user.password" id="password" name="password"><br>
+      <input type="password" [(ngModel)]="user.password" id="password" name="password"
+             #password="ngModel" required id="password"><br>
+    <!--
     </div>
 
     <div class="form-group">
-      <label for ="Confirm password">Confirm Password:</label><br>
-      <input type="password" id="Confirm password" name="Con_password" ><br>
+    -->
+
+      <label for ="confirm_password">Confirm Password:</label><br>
+      <input type="password" id="confirm_password" name="confirm_password" [(ngModel)]="confirm_password" required id="confirm_password"><br>
     </div>
 
     <div class="form-group">

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../model/user";
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
-
 
 @Component({
   selector: 'app-sign-up',
@@ -11,14 +9,14 @@ import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, 
 })
 export class SignUpComponent implements OnInit {
   user: User = new User();
+  confirm_password: String = "";
 
-  constructor(private service: UserService) { }
+  constructor(private service: UserService){ }
 
   ngOnInit(): void { }
 
   addUser(): void{
     this.service.addUser(this.user).subscribe(user => this.user);
   }
-
 }
 

@@ -8,7 +8,7 @@ import {HttpClient, HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import{appRoutes} from "./routes/routes";
 import { SignUpComponent } from './user/sign-up/sign-up.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DeleteComponent } from './user/delete/delete.component';
 
 @NgModule({
@@ -16,14 +16,15 @@ import { DeleteComponent } from './user/delete/delete.component';
     AppComponent,
     UserComponent,
     SignUpComponent,
-    DeleteComponent
+    DeleteComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        RouterModule.forRoot(appRoutes),
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [UserService, HttpClient],
   bootstrap: [AppComponent]
 })
