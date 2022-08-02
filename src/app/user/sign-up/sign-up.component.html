@@ -1,5 +1,18 @@
 <h2><br>Sign Up</h2>
 
+<script>
+  function matchPassword() {
+    var pw1 = document.getElementById("password");
+    var pw2 = document.getElementById("confirm_password");
+    if(pw1 != pw2)
+    {
+      alert("Passwords do not match");
+    } else {
+      alert("Password created successfully");
+    }
+  }
+</script>
+
 <div class="col-md-6">
   <form>
     <div class="form-group">
@@ -7,18 +20,14 @@
       <input type="text" [(ngModel)]="user.username" id="username" name="username" ><br>
     </div>
 
-    <div class="form-group" ngModelGroup="passwords" #passwords="ngModelGroup" appCheckPassword>
+    <div class="form-group">
       <label for ="password">Password:</label><br>
-      <input type="password" [(ngModel)]="user.password" id="password" name="password"
-             #password="ngModel" required id="password"><br>
-    <!--
+      <input type="password" [(ngModel)]="user.password" id="password" name="password" required id="password"><br>
     </div>
 
     <div class="form-group">
-    -->
-
       <label for ="confirm_password">Confirm Password:</label><br>
-      <input type="password" id="confirm_password" name="confirm_password" [(ngModel)]="confirm_password" required id="confirm_password"><br>
+      <input type="password" id="confirm_password" name="confirm_password" required id="confirm_password" onChange="matchPassword()" ><br>
     </div>
 
     <div class="form-group">
@@ -33,7 +42,7 @@
 
     <div class="form-group">
       <label for="email">Email:</label><br>
-      <input type="email" [(ngModel)]="user.email" id="email" name="email"><br>
+      <input type="email" [(ngModel)]="user.email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" id="email" name="email" required><br>
     </div>
 
     <div class="form-group">
