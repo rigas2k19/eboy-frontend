@@ -12,9 +12,7 @@ export class AppComponent {
 
   users: User[] = [];
 
-  constructor(private service: UserService){
-
-  }
+  constructor(private service: UserService){ }
 
   ngOnInit(){
     //this.users = this.service.getUsers();

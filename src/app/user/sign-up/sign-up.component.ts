@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../model/user";
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 
 
 @Component({
@@ -13,10 +14,11 @@ export class SignUpComponent implements OnInit {
 
   constructor(private service: UserService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   addUser(): void{
     this.service.addUser(this.user).subscribe(user => this.user);
   }
 
 }
+
