@@ -17,6 +17,7 @@ import { DeleteComponent } from './user/delete/delete.component';
     UserComponent,
     SignUpComponent,
     DeleteComponent,
+    LoginComponent,
   ],
     imports: [
         BrowserModule,

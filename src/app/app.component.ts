@@ -23,5 +23,4 @@ export class AppComponent {
   deActivateForm(): void{
     this.activeForm = false;
   }
-
 }

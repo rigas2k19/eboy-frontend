@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../model/user";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-sign-up',
@@ -17,6 +19,6 @@ export class SignUpComponent implements OnInit {
 
   addUser(): void{
     this.service.addUser(this.user).subscribe(user => this.user);
+    this.router.navigate(['login']);
   }
 }
-
