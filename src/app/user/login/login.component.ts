@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         }
         else{
           alert("User not found");
+          this.loginForm.reset();
         }
     }, error => {
         alert("Something went wrong :(");
