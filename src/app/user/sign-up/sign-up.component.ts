@@ -11,11 +11,11 @@ import {Router} from "@angular/router";
 })
 export class SignUpComponent implements OnInit {
   user: User = new User();
-  confirm_password: String = "";
 
-  constructor(private service: UserService){ }
+  constructor(private service: UserService, private router:Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   addUser(): void{
     this.service.addUser(this.user).subscribe(user => this.user);
