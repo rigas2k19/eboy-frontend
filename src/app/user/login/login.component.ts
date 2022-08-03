@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
         // if this user exists
         if(user){
           this.loginForm.reset();
-          this.router.navigate(['delete']);
+          this.router.navigate(['StartingPage']); // for regular users
+          // we need a check for admin
         }
         else{
           alert("User not found");

@@ -11,6 +11,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import {FormsModule, ReactiveFormsModule, FormBuilder} from "@angular/forms";
 import { DeleteComponent } from './user/delete/delete.component';
 import {LoginComponent} from "./user/login/login.component";
+import { StartingPageComponent } from './user/starting-page/starting-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {LoginComponent} from "./user/login/login.component";
     SignUpComponent,
     DeleteComponent,
     LoginComponent,
+    StartingPageComponent,
   ],
     imports: [
         BrowserModule,

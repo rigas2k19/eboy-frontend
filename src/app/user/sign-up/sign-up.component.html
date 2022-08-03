@@ -1,57 +1,74 @@
-<h2><br>Sign Up</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1> Sign Up </h1>
+        </div>
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="username">Username:</label><br>
+              <input type="text" [(ngModel)]="user.username" id="username" name="username" style="width: 250px;" required>
+            </div>
+          </div>
 
-<div class="col-md-6">
-  <form>
-    <div class="form-group">
-      <label for="username">Username:</label><br>
-      <input type="text" [(ngModel)]="user.username" id="username" name="username" ><br>
-    </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for ="password">Password:</label><br>
+              <input type="password" [(ngModel)]="user.password" id="password" name="password" style="width: 250px;" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for ="confirm_password">Confirm Password:</label><br>
+              <input type="password" id="confirm_password" name="confirm_password" style="width: 250px;" required>
+            </div>
+          </div>
 
-    <div class="form-group">
-      <label for ="password">Password:</label><br>
-      <input type="password" [(ngModel)]="user.password" id="password" name="password" required><br>
-    </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="fname">First Name:</label><br>
+              <input type="text" [(ngModel)]="user.name" id="fname" name="fname" style="width: 250px;">
+            </div>
 
-    <div class="form-group">
-      <label for ="confirm_password">Confirm Password:</label><br>
-      <input type="password" id="confirm_password" name="confirm_password" required><br>
-    </div>
+            <div class="form-group col-md-6">
+              <label for="lname">Last Name:</label><br>
+              <input type="text" [(ngModel)]="user.lastname" id="lname" name="lname" style="width: 250px;">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="email">Email:</label><br>
+              <input type="email" [(ngModel)]="user.email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" id="email" name="email" style="width: 515px;" required><br>
+            </div>
+          </div>
 
-    <div class="form-group">
-      <label for="fname">First Name:</label><br>
-      <input type="text" [(ngModel)]="user.name" id="fname" name="fname"><br>
-    </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="address">Address:</label><br>
+              <input type="text" [(ngModel)]="user.address" id="address" name="address" style="width: 515px;"><br>
+            </div>
+          </div>
 
-    <div class="form-group">
-      <label for="lname">Last Name:</label><br>
-      <input type="text" [(ngModel)]="user.lastname" id="lname" name="lname"><br>
-    </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="location">Location:</label><br>
+              <input type="text" [(ngModel)]="user.location" id="location" name="location" style="width: 515px;"><br>
+            </div>
+          </div>
 
-    <div class="form-group">
-      <label for="email">Email:</label><br>
-      <input type="email" [(ngModel)]="user.email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" id="email" name="email" required><br>
-    </div>
-
-    <div class="form-group">
-      <label for="phone">Phone Number:</label><br>
-      <input type="text" [(ngModel)]="user.phone" id="phone" name="phone"><br>
-    </div>
-
-    <div class="form-group">
-      <label for="address">Address:</label><br>
-      <input type="text" [(ngModel)]="user.address" id="address" name="address"><br>
-    </div>
-
-    <div class="form-group">
-      <label for="location">Location:</label><br>
-      <input type="text" [(ngModel)]="user.location" id="location" name="location"><br>
-    </div>
-
-    <div class="form-group">
-      <label for="afm">AFM:</label><br>
-      <input type="text" [(ngModel)]="user.afm" id="afm" name="afm"><br><br>
-    </div>
-
-    <button class="btn btn-success" (click)="addUser()" >Sign up</button>
-  </form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="phone">Phone Number:</label><br>
+              <input type="text" [(ngModel)]="user.phone" id="phone" name="phone" style="width: 250px;"><br>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="afm">AFM:</label><br>
+              <input type="text" [(ngModel)]="user.afm" id="afm" name="afm" style="width: 250px;"><br><br>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="addUser()" >Sign up</button>
+        </form>
+      </div>
+   </div>
+  </div>
 </div>

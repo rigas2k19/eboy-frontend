@@ -2,6 +2,7 @@ import {UserComponent} from "../user/user.component";
 import {SignUpComponent} from "../user/sign-up/sign-up.component";
 import {DeleteComponent} from "../user/delete/delete.component";
 import {LoginComponent} from "../user/login/login.component";
+import {StartingPageComponent} from "../user/starting-page/starting-page.component";
 
 export const  appRoutes = [
   {
@@ -29,5 +30,9 @@ export const  appRoutes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'StartingPage',
+    component: StartingPageComponent
   },
 ];
