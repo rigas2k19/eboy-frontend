@@ -1,8 +1,41 @@
+<!--
 <ol>
   <li *ngFor='let user of users'>
     <a [routerLink]="['/users', user.username]">{{user.username}} </a>
     <button class="button" (click)="deleteUser(user.username!)"> Delete</button>
   </li>
 </ol>
-<router-outlet></router-outlet>
+ -->
+<div class="container">
+  <table class="table table-bordered table-stripped">
+    <thead>
+      <th>Username</th>
+      <th>Name</th>
+      <th>LastName</th>
+      <th>Password</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Location</th>
+      <th>Phone</th>
+      <th>AFM</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let user of users'>
+        <td><span>{{user.username}}</span></td>
+        <td><span>{{user.name}}</span></td>
+        <td><span>{{user.lastname}}</span></td>
+        <td><span>{{user.password}}</span></td>
+        <td><span>{{user.email}}</span></td>
+        <td><span>{{user.address}}</span></td>
+        <td><span>{{user.location}}</span></td>
+        <td><span>{{user.phone}}</span></td>
+        <td><span>{{user.afm}}</span></td>
+        <td><button class="button" (click)="deleteUser(user.username!)"> Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
+
+<router-outlet></router-outlet>
