@@ -14,7 +14,7 @@ const httpOptions = {
 })
 
 export class UserService {
-  private usersUrl = 'http://localhost:8080/users';
+  private usersUrl = 'http://localhost:8081/users';
 
   constructor(private http: HttpClient){}
 
@@ -27,7 +27,7 @@ export class UserService {
   }
 
   public addUser(user: User): Observable<User>{
-    alert(user.name);
+    alert("added user: " + user.username);
     return this.http.post<User>(this.usersUrl, user);
   }
 

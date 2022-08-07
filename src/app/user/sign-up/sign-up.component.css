@@ -15,3 +15,7 @@
   top: 83%;
   position: absolute;
 }
+
+.alert{
+  color: red;
+}

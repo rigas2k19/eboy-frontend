@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {User} from "./model/user";
 import {UserService} from "./services/user.service";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
