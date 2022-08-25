@@ -67,7 +67,7 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="email">Email:</label><br>
-              <input formControlName="email" type="email" [(ngModel)]="user.email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" id="email" name="email" style="width: 515px;" required><br>
+              <input formControlName="email" type="email" [(ngModel)]="user.email" id="email" name="email" style="width: 515px;" required><br>
               <div *ngIf="submitted && email!.errors" class ="alert">
                 <div *ngIf="email!.errors?.['required']">
                   Email is required

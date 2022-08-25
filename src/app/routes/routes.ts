@@ -3,6 +3,8 @@ import {SignUpComponent} from "../user/sign-up/sign-up.component";
 import {DeleteComponent} from "../user/delete/delete.component";
 import {LoginComponent} from "../user/login/login.component";
 import {StartingPageComponent} from "../user/starting-page/starting-page.component";
+import {AuthGuard} from "../guards/auth.guard";
+import {Role} from '../model/role';
 
 export const  appRoutes = [
   {
@@ -25,7 +27,9 @@ export const  appRoutes = [
   },
   {
     path: 'delete',
-    component: DeleteComponent
+    component: DeleteComponent,
+    canActivate: [AuthGuard],
+    data:{roles: ['ROLE_ADMIN']}
   },
   {
     path: 'login',
@@ -33,6 +37,8 @@ export const  appRoutes = [
   },
   {
     path: 'StartingPage',
-    component: StartingPageComponent
+    component: StartingPageComponent,
+    canActivate: [AuthGuard],
+    data:{roles: ['ROLE_USER', 'ROLE_GUEST']}
   },
 ];

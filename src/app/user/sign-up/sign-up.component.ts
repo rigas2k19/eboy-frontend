@@ -63,6 +63,8 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
+
+
     //else user info is valid and we want to add user to database
     this.service.addUser({
      username:this.username!.value,
@@ -73,7 +75,8 @@ export class SignUpComponent implements OnInit {
       phone:this.phone!.value,
       address:this.address!.value,
       location:this.location!.value,
-      afm:this.afm!.value
+      afm:this.afm!.value,
+      roles: new Set<String> (["ROLE_USER"])
     }).subscribe();
 
     this.router.navigate(['login']);
