@@ -1,4 +1,5 @@
 import {Validators} from "@angular/forms";
+import {Role} from "./role";
 
 export class User {
   username: string | undefined;

@@ -19,5 +19,4 @@ export class DeleteComponent implements OnInit {
   deleteUser(uname: string): void{
     this.service.deleteUser(uname).subscribe(user => this.users);
   }
-
 }

@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Role} from "../../model/role";
 
 @Component({
   selector: 'app-sign-up',
@@ -78,11 +79,14 @@ export class SignUpComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-
+/*
   addUser(): void{
+    this.user.admin = false;  // for every user ( but not admin )
     this.service.addUser(this.user).subscribe(user => this.user);
     this.router.navigate(['login']);
   }
+*/
+
 }
 
 function MustMatch(controlName: string, matchingControlName: string) {
