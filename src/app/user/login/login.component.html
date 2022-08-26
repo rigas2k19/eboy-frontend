@@ -1,3 +1,4 @@
+<!--
 <body>
   <div class="container">
     <div class="row">
@@ -7,7 +8,6 @@
             <h1> Login </h1>
             <h6> Please enter username and password </h6>
           </div>
-          <!-- bootstrap form -->
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group">
               <label for="username"> Username </label>
@@ -25,3 +25,22 @@
     </div>
   </div>
 </body>
+-->
+
+<div>
+  <h2>Login</h2>
+  <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <div>
+      <label for="username">Username:</label>&nbsp;&nbsp;
+      <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+      <div *ngIf="f.submitted && !username.valid" style="color: red;">Username is required</div>
+    </div>
+    <div style="margin-top: 5px;">
+      <label for="password">Password:</label>&nbsp;&nbsp;&nbsp;
+      <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+      <div *ngIf="f.submitted && !password.valid" style="color: red;">Password is required</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <a routerLink="/signup" class="route"> Click to SignUp </a>
+  </form>
+</div>

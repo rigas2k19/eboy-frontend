@@ -12,7 +12,7 @@ import {Role} from "./model/role";
 })
 export class AppComponent {
   title = 'eboy-frontend';
-
+/*
   user: User = new User();
   users: User[] = [];
 
@@ -34,6 +34,6 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
-  }
+  }*/
 
 }
