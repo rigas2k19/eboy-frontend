@@ -31,9 +31,11 @@ export class UserService {
     return this.http.post<User>(this.usersUrl, user);
   }
 
-  /* Delete User */
+  // Delete User //
   public deleteUser(uname: string): Observable<User>{
     return this.http.delete<User>(this.usersUrl+"/"+uname);
   }
 
 }
+
+

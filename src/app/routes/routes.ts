@@ -41,4 +41,5 @@ export const  appRoutes = [
     canActivate: [AuthGuard],
     data:{roles: ['ROLE_USER', 'ROLE_GUEST']}
   },
+  { path: '**', redirectTo: '' }
 ];
