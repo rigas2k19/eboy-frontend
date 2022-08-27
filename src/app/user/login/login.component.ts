@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
+
+
   login(){
     this.loading = true;
     this.authenticationService.login(this.model.username, this.model.password)
@@ -34,40 +36,6 @@ export class LoginComponent implements OnInit {
           console.log(response);
           //localStorage.setItem(this.TOKEN_NAME, response.token);  // keep token in local storage
           this.router.navigate(['/StartingPage']); }
-      );
-  }
-}*/
-
-@Component({
-  moduleId: module.id.toString(),
-  templateUrl: 'login.component.html'
-})
-
-export class LoginComponent implements OnInit {
-  model: any = {};
-  loading = false;
-  returnUrl: string = '/';
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService
-  ) { }
-
-  ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  }
-
-  login(): void {
-    //alert("geia")
-    //this.loading = true;
-    alert(this.model.password);
-    this.authenticationService.login(this.model.username, this.model.password)
-      .subscribe(
-        response => {
-          localStorage.setItem('token', <string>response.headers.get('Authorization'));
-          alert(<string>response.headers.get('Authorization'));
-          this.router.navigate([this.returnUrl]); }
       );
   }
 }

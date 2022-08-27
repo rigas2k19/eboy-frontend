@@ -28,7 +28,7 @@ export class UserService {
 
   public addUser(user: User): Observable<User>{
     alert("added user: " + user.username);
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>(this.usersUrl, user,);
   }
 
   // Delete User //

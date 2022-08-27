@@ -38,8 +38,8 @@ export const  appRoutes = [
   {
     path: 'StartingPage',
     component: StartingPageComponent,
-    canActivate: [AuthGuard],
-    data:{roles: ['ROLE_USER', 'ROLE_GUEST']}
+    canActivate: [AuthGuard]//,
+    //data:{roles: ['ROLE_USER', 'ROLE_GUEST']}
   },
   { path: '**', redirectTo: '' }
 ];
