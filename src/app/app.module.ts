@@ -12,8 +12,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DeleteComponent } from './user/delete/delete.component';
 import {LoginComponent} from "./user/login/login.component";
 import { StartingPageComponent } from './user/starting-page/starting-page.component';
-import {ErrorInterceptor} from "./helpers/error.interceptor";
-import {JwtInterceptor} from "./helpers/jwt.interceptor";
+import {JwtInterceptorProvider} from "./helpers/jwt.interceptor";
+
 
 
 @NgModule({
@@ -32,8 +32,7 @@ import {JwtInterceptor} from "./helpers/jwt.interceptor";
         FormsModule,
         ReactiveFormsModule
     ],
-  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } ,HttpClient],
+  providers: [JwtInterceptorProvider, UserService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

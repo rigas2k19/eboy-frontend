@@ -17,7 +17,8 @@ export const  appRoutes = [
     children :[
       {
         path: '',
-        component: UserComponent
+        component: UserComponent,
+        canActivate: [AuthGuard]
       },
     ]
   },
@@ -29,7 +30,6 @@ export const  appRoutes = [
     path: 'delete',
     component: DeleteComponent,
     canActivate: [AuthGuard],
-    data:{roles: ['ROLE_ADMIN']}
   },
   {
     path: 'login',

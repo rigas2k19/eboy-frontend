@@ -36,4 +36,6 @@ export class AppComponent {
     this.authenticationService.logout();
   }*/
 
+  constructor(public authService: AuthenticationService){ }
+
 }

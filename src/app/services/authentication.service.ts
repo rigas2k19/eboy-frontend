@@ -1,27 +1,29 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {User} from "../model/user";
+import {BehaviorSubject, tap} from 'rxjs';
+import {ApiService} from "./api.service";
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  private userSubject: BehaviorSubject<User>;
-  public user: Observable<User>;
+  private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this._isLoggedIn$.asObservable();
+  private readonly TOKEN_NAME = 'token';
+
+  get token() : any{
+    return localStorage.getItem(this.TOKEN_NAME);
+  }
+
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private apiService: ApiService
   ) {
-    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user') || '{}'));
-    this.user = this.userSubject.asObservable();
+    this._isLoggedIn$.next(!!this.token);
   }
 
-  public get userValue(): User {
-    return this.userSubject.value;
-  }
 
   login(username: string, password: string) {
     return this.http.post<any>(`https://localhost:8443/auth/login`, { username, password },{ withCredentials: true })
@@ -35,11 +37,11 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
+    localStorage.removeItem(this.TOKEN_NAME);
     //this.userSubject.next(null);   enimeronei oti o xristis aposundethike
     this.router.navigate(['/login']);
   }
-}*/
+}
 
 
 //χαμοδρακας:

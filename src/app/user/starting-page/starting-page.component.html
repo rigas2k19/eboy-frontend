@@ -1,11 +1,14 @@
-<div class="topnav">
-  <a routerLink="/signup" class="route">SignUp</a>
-  <a href="#news">Active Bids</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-</div>
+<div *ngIf="authService.isLoggedIn$ | async">
+  <div class="topnav">
+    <a routerLink="/signup" class="route">SignUp</a>
+    <a href="#news">Active Bids</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-<div style="padding-left:16px">
-  <h2>Top Navigation Example</h2>
-  <p>Some content..</p>
+  <div style="padding-left:16px">
+    <h2>Top Navigation Example</h2>
+    <p>Some content..</p>
+  </div>
+
 </div>

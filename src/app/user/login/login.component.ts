@@ -5,7 +5,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 
 
-/*
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   model: any = {};
   loading = false;
-  returnUrl: string = '/';
+  //private readonly TOKEN_NAME = 'token';
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,private authenticationService: AuthenticationService, private route: ActivatedRoute) { }
 
@@ -32,8 +31,9 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
         response => {
-          localStorage.setItem('token', <string>response.headers.get('Authorization'));
-          this.router.navigate([this.returnUrl]); }
+          console.log(response);
+          //localStorage.setItem(this.TOKEN_NAME, response.token);  // keep token in local storage
+          this.router.navigate(['/StartingPage']); }
       );
   }
 }*/

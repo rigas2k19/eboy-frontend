@@ -1,57 +1,33 @@
-/*
 
-import { Injectable } from '@angular/core';
 import {
-  HttpRequest,
-  HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {AuthenticationService} from "../services/authentication.service";
 
-@Injectable()
-export class JwtInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) { }
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // add auth header with jwt if user is logged in and request is to api url
-    const user = this.authenticationService.userValue;
-    const isLoggedIn = user && user.token;
-    const isApiUrl = request.url.startsWith('https://localhost:8443');
-    if (isLoggedIn && isApiUrl) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${user.token}`
-        }
-      });
-    }
-
-    return next.handle(request);
-  }
-}*/
-
-
-//χαμοδρακας:
-
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // add authorization header with jwt token if available
-    const token = localStorage.getItem('token');
-    if (token) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: token
-        }
-      });
-    }
+  constructor(private authService: AuthenticationService) {}
 
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
+    request = request.clone({	// create a new request
+      headers: request.headers.set('Authorization','Bearer ' + this.authService.token),
+    });
+    console.log(request);
     return next.handle(request);
   }
 }
+
+export const JwtInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: JwtInterceptor,
+  multi: true,
+};
 
