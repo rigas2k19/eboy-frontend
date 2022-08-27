@@ -15,6 +15,7 @@ const httpOptions = {
 
 export class UserService {
   private usersUrl = 'https://localhost:8443/users';
+  private signupUrl = 'https://localhost:8443/signup'
 
   constructor(private http: HttpClient){}
 
@@ -28,7 +29,8 @@ export class UserService {
 
   public addUser(user: User): Observable<User>{
     alert("added user: " + user.username);
-    return this.http.post<User>(this.usersUrl, user,);
+    //return this.http.post<User>(this.usersUrl, user,);
+    return this.http.post<User>(this.signupUrl, user,);
   }
 
   // Delete User //
