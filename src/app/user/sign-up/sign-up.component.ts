@@ -64,6 +64,8 @@ export class SignUpComponent implements OnInit {
     }
 
 
+    let roleset = new Set<string>();
+    roleset.add("USER");
 
     //else user info is valid and we want to add user to database
     this.service.addUser({
@@ -76,7 +78,7 @@ export class SignUpComponent implements OnInit {
       address:this.address!.value,
       location:this.location!.value,
       afm:this.afm!.value,
-      roles: new Set<String> (["ROLE_USER"])
+      roles: roleset
     }).subscribe();
 
     this.router.navigate(['login']);

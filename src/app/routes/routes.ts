@@ -5,6 +5,7 @@ import {LoginComponent} from "../user/login/login.component";
 import {StartingPageComponent} from "../user/starting-page/starting-page.component";
 import {AuthGuard} from "../guards/auth.guard";
 import {Role} from '../model/role';
+import {RoleGuard} from "../guards/role.guard";
 
 export const  appRoutes = [
   {
@@ -29,7 +30,8 @@ export const  appRoutes = [
   {
     path: 'delete',
     component: DeleteComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data:{role: ['ROLE_ADMIN']}
   },
   {
     path: 'login',

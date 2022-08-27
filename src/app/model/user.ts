@@ -11,7 +11,8 @@ export class User {
   address: string | undefined;
   location: string | undefined;
   afm: string | undefined;
-  roles: Set<String> | undefined;
+  roles: Set<string> = new Set<string>();
+  //roles: string[] = [];
   token?: string
 
 }
