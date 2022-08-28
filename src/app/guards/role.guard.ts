@@ -16,7 +16,7 @@ export class RoleGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const isAuthorized = this.authService.user?.roles.has(route.data.role);
+    const isAuthorized = (this.authService.user?.roles as unknown as string).includes(route.data.role);
 
     if (!isAuthorized) {
       // redirect

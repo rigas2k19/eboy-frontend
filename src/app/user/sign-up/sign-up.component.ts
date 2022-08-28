@@ -64,8 +64,8 @@ export class SignUpComponent implements OnInit {
     }
 
 
-    let roleset = new Set<string>();
-    roleset.add("USER");
+    let roleset = [];
+    roleset.push("ROLE_USER");
 
     //else user info is valid and we want to add user to database
     this.service.addUser({
