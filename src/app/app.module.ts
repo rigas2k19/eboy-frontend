@@ -15,6 +15,8 @@ import { StartingPageComponent } from './user/starting-page/starting-page.compon
 import {JwtInterceptorProvider} from "./helpers/jwt.interceptor";
 import { ApproveComponent } from './user/approve/approve.component';
 import { WaitingComponent } from './user/waiting/waiting.component';
+import { ItemComponent } from './item/item.component';
+import { AddItemComponent } from './item/add-item/add-item.component';
 
 
 
@@ -28,6 +30,8 @@ import { WaitingComponent } from './user/waiting/waiting.component';
     StartingPageComponent,
     ApproveComponent,
     WaitingComponent,
+    ItemComponent,
+    AddItemComponent,
   ],
     imports: [
         BrowserModule,

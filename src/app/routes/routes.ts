@@ -7,6 +7,8 @@ import {AuthGuard} from "../guards/auth.guard";
 import {RoleGuard} from "../guards/role.guard";
 import {ApproveComponent} from "../user/approve/approve.component";
 import {WaitingComponent} from "../user/waiting/waiting.component";
+import {AddItemComponent} from "../item/add-item/add-item.component";
+import {ItemComponent} from "../item/item.component";
 
 export const  appRoutes = [
   {
@@ -52,6 +54,19 @@ export const  appRoutes = [
   {
     path: 'waiting',
     component: WaitingComponent
+  },
+  {
+    path: 'items',
+    children :[
+      {
+        path: 'add',
+        component: AddItemComponent,
+      },{
+        path: '',
+        component: ItemComponent,
+      },
+    ]
+
   },
   { path: '**', redirectTo: '' }
 ];

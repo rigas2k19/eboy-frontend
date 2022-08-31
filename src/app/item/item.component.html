@@ -1,0 +1,7 @@
+<p>item works!</p>
+<ol>
+  <li *ngFor='let item of items'>
+    <a [routerLink]="['/items', item.name]">{{item.name}} </a>
+  </li>
+</ol>
+<router-outlet></router-outlet>]
