@@ -16,7 +16,10 @@ const httpOptions = {
 export class UserService {
   private usersUrl = 'https://localhost:8443/users';
   private signupUrl = 'https://localhost:8443/signup'
-  private approveUrl = 'https://localhost:8443/users/approve'
+  private approveUrl = 'https://localhost:8443/users/approve';
+  private isApprovedUrl = 'https://localhost:8443/users/isApproved';
+
+  user: User = new User();
 
   constructor(private http: HttpClient){}
 
