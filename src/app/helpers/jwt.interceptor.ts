@@ -20,6 +20,10 @@ export class JwtInterceptor implements HttpInterceptor {
       console.log(request);
       return next.handle(request);
     }
+    if(request.method == "GET" && request.url == 'https://localhost:8443/users/isApproved/admin'){
+      console.log(request);
+      return next.handle(request);
+    }
     request = request.clone({	// create a new request
       headers: request.headers.set('Authorization','Bearer ' + this.authService.token),
     });

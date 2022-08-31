@@ -47,6 +47,9 @@ export class UserService {
     return this.http.put<User>(this.approveUrl+"/"+user.username, user,);
   }
 
+  public isApproved(username: string): Observable<User> {
+    return this.http.get<User>(this.isApprovedUrl+"/"+username);
+  }
 }
 
 

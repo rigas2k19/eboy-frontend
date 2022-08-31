@@ -20,9 +20,8 @@ export class LoginComponent implements OnInit {
 
   model: any = {};
   loading = false;
-  //private readonly TOKEN_NAME = 'token';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,private authenticationService: AuthenticationService, private route: ActivatedRoute) { }
+  constructor(private service: UserService, private fb: FormBuilder, private http: HttpClient, private router: Router,private authenticationService: AuthenticationService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
