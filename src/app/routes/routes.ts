@@ -5,6 +5,8 @@ import {LoginComponent} from "../user/login/login.component";
 import {StartingPageComponent} from "../user/starting-page/starting-page.component";
 import {AuthGuard} from "../guards/auth.guard";
 import {RoleGuard} from "../guards/role.guard";
+import {ApproveComponent} from "../user/approve/approve.component";
+import {WaitingComponent} from "../user/waiting/waiting.component";
 
 export const  appRoutes = [
   {
@@ -16,6 +18,11 @@ export const  appRoutes = [
     path: 'users',
     children :[
       {
+        path: 'approve',
+        component: ApproveComponent,
+        canActivate: [AuthGuard, RoleGuard],
+        data:{role: ['ROLE_ADMIN']}
+      },{
         path: '',
         component: UserComponent,
         canActivate: [AuthGuard]
@@ -41,6 +48,10 @@ export const  appRoutes = [
     component: StartingPageComponent,
     canActivate: [AuthGuard]//,
     //data:{roles: ['ROLE_USER', 'ROLE_GUEST']}
+  },
+  {
+    path: 'waiting',
+    component: WaitingComponent
   },
   { path: '**', redirectTo: '' }
 ];

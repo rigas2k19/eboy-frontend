@@ -13,18 +13,19 @@
     <th>Approved</th>
     </thead>
     <tbody>
-      <tr *ngFor='let user of users'>
-          <td><span>{{user.username}}</span></td>
-          <td><span>{{user.name}}</span></td>
-          <td><span>{{user.lastname}}</span></td>
-          <td><span>{{user.password}}</span></td>
-          <td><span>{{user.email}}</span></td>
-          <td><span>{{user.address}}</span></td>
-          <td><span>{{user.location}}</span></td>
-          <td><span>{{user.phone}}</span></td>
-          <td><span>{{user.afm}}</span></td>
-          <td><button class="button" (click)="deleteUser(user.username!)"> Delete</button></td>
-      </tr>
+    <tr *ngFor='let user of users'>
+      <td ><span>{{user.username}}</span></td>
+      <td><span>{{user.name}}</span></td>
+      <td><span>{{user.lastname}}</span></td>
+      <td><span>{{user.password}}</span></td>
+      <td><span>{{user.email}}</span></td>
+      <td><span>{{user.address}}</span></td>
+      <td><span>{{user.location}}</span></td>
+      <td><span>{{user.phone}}</span></td>
+      <td><span>{{user.afm}}</span></td>
+      <td><span>{{user.approved}}</span></td>
+      <td><button class="button" (click)="deleteUser(user.username!)"> Delete</button></td>
+    </tr>
     </tbody>
   </table>
 </div>

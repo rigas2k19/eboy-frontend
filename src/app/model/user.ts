@@ -10,7 +10,6 @@ export class User {
   address: string | undefined;
   location: string | undefined;
   afm: string | undefined;
-  //roles: Set<string> = new Set<string>();
   roles: string[] = [];
   token?: string;
   approved: boolean |undefined;
