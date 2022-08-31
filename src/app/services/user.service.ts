@@ -16,6 +16,7 @@ const httpOptions = {
 export class UserService {
   private usersUrl = 'https://localhost:8443/users';
   private signupUrl = 'https://localhost:8443/signup'
+  private approveUrl = 'https://localhost:8443/users/approve'
 
   constructor(private http: HttpClient){}
 
@@ -36,6 +37,11 @@ export class UserService {
   // Delete User //
   public deleteUser(uname: string): Observable<User>{
     return this.http.delete<User>(this.usersUrl+"/"+uname);
+  }
+
+  // Approve User //
+  public approveUser(user: User): Observable<User>{
+    return this.http.put<User>(this.approveUrl+"/"+user.username, user,);
   }
 
 }

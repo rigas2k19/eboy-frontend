@@ -4,7 +4,6 @@ import {DeleteComponent} from "../user/delete/delete.component";
 import {LoginComponent} from "../user/login/login.component";
 import {StartingPageComponent} from "../user/starting-page/starting-page.component";
 import {AuthGuard} from "../guards/auth.guard";
-import {Role} from '../model/role';
 import {RoleGuard} from "../guards/role.guard";
 
 export const  appRoutes = [

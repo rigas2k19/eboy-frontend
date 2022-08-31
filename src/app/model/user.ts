@@ -1,5 +1,4 @@
 import {Validators} from "@angular/forms";
-import {Role} from "./role";
 
 export class User {
   username: string | undefined;
@@ -13,6 +12,7 @@ export class User {
   afm: string | undefined;
   //roles: Set<string> = new Set<string>();
   roles: string[] = [];
-  token?: string
+  token?: string;
+  approved: boolean |undefined;
 
 }

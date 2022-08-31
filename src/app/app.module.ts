@@ -13,6 +13,8 @@ import { DeleteComponent } from './user/delete/delete.component';
 import {LoginComponent} from "./user/login/login.component";
 import { StartingPageComponent } from './user/starting-page/starting-page.component';
 import {JwtInterceptorProvider} from "./helpers/jwt.interceptor";
+import { ApproveComponent } from './user/approve/approve.component';
+import { WaitingComponent } from './user/waiting/waiting.component';
 
 
 
@@ -24,6 +26,8 @@ import {JwtInterceptorProvider} from "./helpers/jwt.interceptor";
     DeleteComponent,
     LoginComponent,
     StartingPageComponent,
+    ApproveComponent,
+    WaitingComponent,
   ],
     imports: [
         BrowserModule,

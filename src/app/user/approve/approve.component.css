@@ -1,0 +1,23 @@
+.button{
+  background-color: #f54f43;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0.8;
+}
+.button:hover {opacity: 1}
+/*
+.mytable{
+  overflow-x:hidden;
+  width:100%;
+  border:0;
+  cellspacing:0;
+  cellpadding:0;
+}*/

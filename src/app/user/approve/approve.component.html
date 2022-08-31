@@ -1,0 +1,35 @@
+<table class="table table-bordered table-stripped" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <thead>
+    <th>Username</th>
+    <th>Name</th>
+    <th>LastName</th>
+    <th>Password</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Location</th>
+    <th>Phone</th>
+    <th>AFM</th>
+    <th>Approved</th>
+    <th></th>
+    </thead>
+    <tbody>
+    <tr *ngFor='let user of users'>
+      <ng-container *ngIf="!user.approved">
+        <td><span>{{user.username}}</span></td>
+        <td><span>{{user.name}}</span></td>
+        <td><span>{{user.lastname}}</span></td>
+        <td><span>{{user.password}}</span></td>
+        <td><span>{{user.email}}</span></td>
+        <td><span>{{user.address}}</span></td>
+        <td><span>{{user.location}}</span></td>
+        <td><span>{{user.phone}}</span></td>
+        <td><span>{{user.afm}}</span></td>
+        <td><span>{{user.approved}}</span></td>
+        <td><button class="button" (click)="approveUser(user)">Approve</button></td>
+      </ng-container>
+    </tr>
+    </tbody>
+</table>
+
+
+<router-outlet></router-outlet>

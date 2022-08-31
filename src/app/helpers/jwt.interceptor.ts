@@ -17,7 +17,6 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(request.method == "POST" && request.url == 'https://localhost:8443/signup'){
-      console.log("lopou");
       console.log(request);
       return next.handle(request);
     }

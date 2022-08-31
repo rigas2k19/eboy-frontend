@@ -3,7 +3,6 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../model/user";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Role} from "../../model/role";
 
 @Component({
   selector: 'app-sign-up',
@@ -64,12 +63,13 @@ export class SignUpComponent implements OnInit {
     }
 
 
-    let roleset = [];
-    roleset.push("ROLE_USER");
+    let roleset = []
+    roleset.push("ROLES_USER")
+
 
     //else user info is valid and we want to add user to database
     this.service.addUser({
-     username:this.username!.value,
+      username:this.username!.value,
       password:this.password!.value,
       name:this.fname!.value,
       lastname:this.lname!.value,
@@ -78,19 +78,12 @@ export class SignUpComponent implements OnInit {
       address:this.address!.value,
       location:this.location!.value,
       afm:this.afm!.value,
-      roles: roleset
+      roles: roleset,
+      approved: false
     }).subscribe();
 
-    this.router.navigate(['login']);
+    this.router.navigate(['waiting']);
   }
-
-/*
-  addUser(): void{
-    this.user.admin = false;  // for every user ( but not admin )
-    this.service.addUser(this.user).subscribe(user => this.user);
-    this.router.navigate(['login']);
-  }
-*/
 
 }
 
@@ -112,3 +105,4 @@ function MustMatch(controlName: string, matchingControlName: string) {
     }
   }
 }
+
