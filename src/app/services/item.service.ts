@@ -26,10 +26,13 @@ export class ItemService {
     return this.http.post<Item>(this.itemsUrl + '/add', item,);
   }
 
-  // Delete User //
+  // Delete Item //
   public deleteItem(itemId: number): Observable<User>{
     return this.http.delete<User>(this.itemsUrl+"/"+itemId);
   }
 
+  public editItem(item: Item): Observable<Item>{
+    return this.http.put<Item>(this.itemsUrl+"/add/"+item.id, item,);
+  }
 
 }
