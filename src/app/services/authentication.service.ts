@@ -28,9 +28,9 @@ export class AuthenticationService {
   }
 
 
-  private getUser(token: string): User | null {
+  getUser(token: string): User | null {
     if (!token) {
-      return null
+      return null;
     }
     return JSON.parse(atob(token.split('.')[1])) as User;
   }

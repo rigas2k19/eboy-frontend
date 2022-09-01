@@ -17,6 +17,7 @@ import { ApproveComponent } from './user/approve/approve.component';
 import { WaitingComponent } from './user/waiting/waiting.component';
 import { ItemComponent } from './item/item.component';
 import { AddItemComponent } from './item/add-item/add-item.component';
+import { UserItemsComponent } from './user/user-items/user-items.component';
 
 
 
@@ -32,6 +33,7 @@ import { AddItemComponent } from './item/add-item/add-item.component';
     WaitingComponent,
     ItemComponent,
     AddItemComponent,
+    UserItemsComponent,
   ],
     imports: [
         BrowserModule,
