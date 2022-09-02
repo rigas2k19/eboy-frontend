@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../model/user";
 import {Item} from "../../model/item";
 import {ItemService} from "../../services/item.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-user-items',
@@ -13,11 +14,13 @@ export class UserItemsComponent implements OnInit {
   public username !:string;
   public items: Item[] = [];
   public submitted = false;
-
+  private item: Item = new Item();      //item that is selected for edit
   public start!:string;
   public end!:string;
+  edititemForm!: FormGroup;
+  public show!: boolean;
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
@@ -27,6 +30,18 @@ export class UserItemsComponent implements OnInit {
     this.username = decodedJWT.username;
 
     this.itemService.getItems().subscribe(items => this.items = items);
+
+    this.edititemForm = this.fb.group({
+      id: [''],
+      firstname: [''],
+      lastname: [''],
+      department: [''],
+      email: [''],
+      country: ['']
+    } );
+
+    this.show = false;
+
   }
 
   myInit(item : Item){
