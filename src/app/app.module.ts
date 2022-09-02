@@ -18,6 +18,7 @@ import { WaitingComponent } from './user/waiting/waiting.component';
 import { ItemComponent } from './item/item.component';
 import { AddItemComponent } from './item/add-item/add-item.component';
 import { UserItemsComponent } from './user/user-items/user-items.component';
+import { EditItemComponent } from './item/edit-item/edit-item.component';
 
 
 
@@ -34,6 +35,7 @@ import { UserItemsComponent } from './user/user-items/user-items.component';
     ItemComponent,
     AddItemComponent,
     UserItemsComponent,
+    EditItemComponent,
   ],
     imports: [
         BrowserModule,

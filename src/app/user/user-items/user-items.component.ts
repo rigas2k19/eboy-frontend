@@ -32,9 +32,10 @@ export class UserItemsComponent implements OnInit {
   myInit(item : Item){
     this.start = item.started!;
     this.end = item.ends!;
+    this.submitted = true;
   }
 
-  settime(item : Item){
+  startAuction(item : Item){
     this.submitted = true;
     this.itemService.editItem({
       id: item.id,
@@ -48,7 +49,52 @@ export class UserItemsComponent implements OnInit {
       sellerUsername: item.sellerUsername,
       currently:item.currently,
       started: item.started,
-      ends: item.ends
+      ends: item.ends,
+      auctionStarted: true
     }).subscribe();
   }
+
+  editAuction(item : Item){
+    this.submitted = true;
+    this.itemService.editItem({
+      id: item.id,
+      name: item.name,
+      category:item.category,
+      first_bid:item.first_bid,
+      buy_price: item.buy_price,
+      description: item.description,
+      number_of_bids: item.number_of_bids,
+      location: item.location,
+      sellerUsername: item.sellerUsername,
+      currently:item.currently,
+      started: item.started,
+      ends: item.ends,
+      auctionStarted: false
+    }).subscribe();
+  }
+
+  showEdit(){
+    this.show = true;
+  }
+
+  openEdit(item: Item) {
+    this.edititemForm.patchValue( {
+      id: item.id,
+      name: item.name,
+      category:item.category,
+      first_bid:item.first_bid,
+      buy_price: item.buy_price,
+      description: item.description,
+      number_of_bids: item.number_of_bids,
+      location: item.location,
+      sellerUsername: item.sellerUsername,
+      currently:item.currently,
+      started: item.started,
+      ends: item.ends,
+      auctionStarted: false
+    });
+  }
+
+
+
 }

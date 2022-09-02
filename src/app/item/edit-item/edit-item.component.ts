@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
+import {Item} from "../../model/item";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ItemService} from "../../services/item.service";
-import {Item} from "../../model/item";
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  selector: 'app-edit-item',
+  templateUrl: './edit-item.component.html',
+  styleUrls: ['./edit-item.component.css']
 })
-export class AddItemComponent implements OnInit {
+export class EditItemComponent implements OnInit {
+
   item : Item = new Item();
-  additemForm!: FormGroup;
+  edititemForm!: FormGroup;
   submitted = false;
   buy_price = 0;
   username!: string;
+
 
   constructor(private service: ItemService, private fb:FormBuilder) { }
 
@@ -23,7 +25,7 @@ export class AddItemComponent implements OnInit {
 
     this.username = decodedJWT.username;
 
-    this.additemForm = this.fb.group({
+    this.edititemForm = this.fb.group({
       name: ['', [Validators.required]],
       category: ['', [Validators.required]],
       buyprice: [''],     //this has option to not exist.
@@ -33,22 +35,21 @@ export class AddItemComponent implements OnInit {
     });
   }
 
-  get form(){return this.additemForm.controls;}
+//<3 <33333
 
-  get name(){return this.additemForm.get('name');}
-  get category(){return this.additemForm.get('category');}
-  get buyprice(){return this.additemForm.get('buyprice');}
-  get firstbid(){return this.additemForm.get('firstbid');}
-  //get start(){return this.additemForm.get('start');}
- // get finish(){return this.additemForm.get('finish');}
-  get description(){return this.additemForm.get('description');}
-  get location(){return this.additemForm.get('location');}
+  get form(){return this.edititemForm.controls;}
 
+  get name(){return this.edititemForm.get('name');}
+  get category(){return this.edititemForm.get('category');}
+  get buyprice(){return this.edititemForm.get('buyprice');}
+  get firstbid(){return this.edititemForm.get('firstbid');}
+  get description(){return this.edititemForm.get('description');}
+  get location(){return this.edititemForm.get('location');}
 
   onSubmit(){
     this.submitted = true;
 
-    if (this.additemForm.invalid) {
+    if (this.edititemForm.invalid) {
       return;
     }
 
@@ -56,7 +57,7 @@ export class AddItemComponent implements OnInit {
       this.buy_price = this.buyprice!.value;
     }
 
-    this.service.addItem({
+    this.service.editItem({
       id:0,
       name:this.name!.value,
       category: this.category!.value,
@@ -71,6 +72,7 @@ export class AddItemComponent implements OnInit {
       description:this.description!.value,
       auctionStarted: false
     }).subscribe();
-
   }
+
+
 }

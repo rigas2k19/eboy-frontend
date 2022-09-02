@@ -10,6 +10,7 @@ import {WaitingComponent} from "../user/waiting/waiting.component";
 import {AddItemComponent} from "../item/add-item/add-item.component";
 import {ItemComponent} from "../item/item.component";
 import {UserItemsComponent} from "../user/user-items/user-items.component";
+import {EditItemComponent} from "../item/edit-item/edit-item.component";
 
 export const  appRoutes = [
   {
@@ -66,7 +67,12 @@ export const  appRoutes = [
       {
         path: 'add',
         component: AddItemComponent,
-      },{
+      },
+      {
+        path: 'edit',
+        component: EditItemComponent,
+      },
+      {
         path: '',
         component: ItemComponent,
       },

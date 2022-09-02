@@ -13,6 +13,10 @@
         </div>
         <ol class="list-group list-group-flush">
 
+          <!-- initialize start and end vars -->
+          <div *ngIf="item.started == '0001-01-01T00:00:00'?myInit(item):false"></div>
+
+
           <li class="list-group-item">ItemId: {{item.id}} </li>
           <li class="list-group-item">Category: {{item.category}} </li>
           <li class="list-group-item">Currently: {{item.currently}} </li>
@@ -20,23 +24,17 @@
           <li class="list-group-item">First Bid: {{item.first_bid}} </li>
           <li class="list-group-item">Number Of Bids: {{item.number_of_bids}} </li>
           <li class="list-group-item">Location: {{item.location}} </li>
-          <li class="list-group-item">Started: {{item.started}} </li>
-          <li class="list-group-item">Ends: {{item.ends}} </li>
+          <!-- Start and End time dont appear if auction has not started -->
+          <li class="list-group-item" *ngIf="item.auctionStarted == true ">Started: {{item.started}} </li>
+          <li class="list-group-item" *ngIf="item.auctionStarted == false">Auction has not started</li>
+          <li class="list-group-item" *ngIf="item.auctionStarted == true">Ends: {{item.ends}} </li>
+
           <li class="list-group-item">Seller: {{item.sellerUsername}} </li>
         </ol>
 
         <div class="card-body-1">
           <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a>
-        </div>
-
-        <div *ngIf="item.started == '0001-01-01T00:00:00'?myInit(item):false"></div>
-
-        <div class="card-body-1">
-          <div *ngIf="start == '0001-01-01T00:00:00' && submitted == false">
-            <label>Start date and time</label>
-            <input type="datetime-local" [(ngModel)]="item.started">
-          </div>
         </div>
 
         <div class="card-body-1">
@@ -46,11 +44,63 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" (click)="settime(item)">Set auction duration</button>
+        <button type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="startAuction(item)">Start auction</button>
+        <button id="btn" type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="showEdit()">Edit Auction</button>
+        <input type="button" ngModel="Edit">
 
       </div>
     </ng-container>
   </ul>
 </div>
+
+<div class="overlay" *ngIf="show == true ">
+  <div class="popup">
+    <div class="modal-body">
+      <form [formGroup]="edititemForm" novalidate>
+        <div class="form-group">
+          <label for="id">Name</label>
+          <div class="input-group">
+            <input formControlName="id" class="form-control" id="id">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <div class="input-group">
+            <input formControlName="firstname" class="form-control" id="firstname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Lastname</label>
+          <div class="input-group">
+            <input formControlName="lastname" class="form-control" id="lastname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="department">Department</label>
+          <div class="input-group">
+            <input formControlName="department" class="form-control" id="department">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-group">
+            <input formControlName="email" class="form-control" id="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <div class="input-group">
+            <input formControlName="country" class="form-control" id="country">
+          </div>
+        </div>
+        <div class="border text-center"> <button data-dismiss="modal" class="btn btn-info" (click)="show = false">Save Changes</button> </div>
+
+        <!-- Add button to save item -->
+
+      </form>
+    </div>
+  </div>
+</div>
+
 
 <router-outlet></router-outlet>

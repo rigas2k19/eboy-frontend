@@ -13,4 +13,5 @@ export class Item{
   ends: string | undefined;         //cast se datetime
   sellerUsername: string | undefined;
   description: string | undefined;
+  auctionStarted: boolean | undefined; // gia to add
 }
