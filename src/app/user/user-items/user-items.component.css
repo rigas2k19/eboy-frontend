@@ -64,3 +64,7 @@
     width: 70%;
   }
 }
+
+#delete{
+  background-color: orangered;
+}

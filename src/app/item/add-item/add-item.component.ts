@@ -26,7 +26,7 @@ export class AddItemComponent implements OnInit {
     this.additemForm = this.fb.group({
       name: ['', [Validators.required]],
       category: ['', [Validators.required]],
-      buyprice: [''],     //this has option to not exist.
+      buyprice: [''],     //this value is optional
       firstbid: ['', [Validators.required]],
       description: ['', [Validators.required]],
       location: ['', [Validators.required]],
@@ -52,7 +52,7 @@ export class AddItemComponent implements OnInit {
       return;
     }
 
-    if(!this.buyprice == undefined){
+    if(!(this.buyprice!.value == undefined)){
       this.buy_price = this.buyprice!.value;
     }
 
@@ -72,5 +72,6 @@ export class AddItemComponent implements OnInit {
       auctionStarted: false
     }).subscribe();
 
+    this.router.navigate(["/users/items"]);
   }
 }

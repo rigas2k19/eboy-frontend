@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../model/user";
 import {Item} from "../../model/item";
 import {ItemService} from "../../services/item.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-items',
@@ -11,7 +12,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class UserItemsComponent implements OnInit {
   public user: User = new User();
-  public username !:string;
+  public username !: string;
   public items: Item[] = [];
   public submitted = false;
   private item: Item = new Item();      //item that is selected for edit
@@ -20,7 +21,40 @@ export class UserItemsComponent implements OnInit {
   edititemForm!: FormGroup;
   public show!: boolean;
 
-  constructor(private itemService: ItemService, private fb:FormBuilder) { }
+  constructor(private itemService: ItemService, private fb: FormBuilder) {
+  }
+
+  get form() {
+    return this.edititemForm.controls;
+  }
+
+  get name() {
+    return this.edititemForm.get('name');
+  }
+
+  get category() {
+    return this.edititemForm.get('category');
+  }
+
+  get buy_price() {
+    return this.edititemForm.get('buy_price');
+  }
+
+  get first_bid() {
+    return this.edititemForm.get('first_bid');
+  }
+
+  get description() {
+    return this.edititemForm.get('description');
+  }
+
+  get location() {
+    return this.edititemForm.get('location');
+  }
+
+  get ends() {
+    return this.startitemForm.get('ends');
+  }
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
@@ -31,20 +65,11 @@ export class UserItemsComponent implements OnInit {
 
     this.itemService.getItems().subscribe(items => this.items = items);
 
-    this.edititemForm = this.fb.group({
-      id: [''],
-      firstname: [''],
-      lastname: [''],
-      department: [''],
-      email: [''],
-      country: ['']
-    } );
-
     this.show = false;
 
   }
 
-  myInit(item : Item){
+  myInit(item: Item) {
     this.start = item.started!;
     this.end = item.ends!;
     this.submitted = true;
@@ -81,7 +106,7 @@ export class UserItemsComponent implements OnInit {
       number_of_bids: item.number_of_bids,
       location: item.location,
       sellerUsername: item.sellerUsername,
-      currently:item.currently,
+      currently: item.currently,
       started: item.started,
       ends: item.ends,
       auctionStarted: false
@@ -112,4 +137,4 @@ export class UserItemsComponent implements OnInit {
 
 
 
-}
+
