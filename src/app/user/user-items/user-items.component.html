@@ -44,9 +44,9 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="startAuction(item)">Start auction</button>
-        <button id="btn" type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="showEdit()">Edit Auction</button>
-        <input type="button" ngModel="Edit">
+        <button type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="showStart(item)">Start auction</button>
+        <button id="btn" type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="showEdit(item)">Edit Auction</button>
+        <button id="delete"  class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="deleteItem(item)">Delete</button>
 
       </div>
     </ng-container>
@@ -100,6 +100,32 @@
         <!-- Add button to save item -->
 
       </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="overlay" *ngIf="startshow == true ">
+  <div class="popup">
+    <div class="modal-body">
+      <form [formGroup]="startitemForm" (ngSubmit)="startAuction(item)" novalidate>
+
+        <div class="form-group">
+          <label for="ending_time">Ending Time </label>
+          <div class="input-group">
+            <input type="datetime-local" formControlName="ends" class="form-control" id="ending_time">
+            <div *ngIf="submitted && ends!.errors" class ="alert">
+              <div *ngIf="ends!.errors?.['Valid_date']">
+                Please enter a valid date and time
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border text-center">
+          <button type="submit" data-dismiss="modal" class="btn btn-info" >Save Changes</button>
+        </div>
+
+       </form>
     </div>
   </div>
 </div>

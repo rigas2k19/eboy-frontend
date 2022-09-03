@@ -15,11 +15,13 @@ export class UserItemsComponent implements OnInit {
   public username !: string;
   public items: Item[] = [];
   public submitted = false;
-  private item: Item = new Item();      //item that is selected for edit
-  public start!:string;
-  public end!:string;
+  public item: Item = new Item();      //item that is selected for edit
+  public start!: string;
+  public end!: string;
   edititemForm!: FormGroup;
+  startitemForm!: FormGroup;
   public show!: boolean;
+  public startshow!: boolean;
 
   constructor(private itemService: ItemService, private fb: FormBuilder) {
   }
@@ -66,6 +68,7 @@ export class UserItemsComponent implements OnInit {
     this.itemService.getItems().subscribe(items => this.items = items);
 
     this.show = false;
+    this.startshow = false;
 
   }
 
@@ -75,66 +78,98 @@ export class UserItemsComponent implements OnInit {
     this.submitted = true;
   }
 
-  startAuction(item : Item){
+  editAuction(item: Item) {
     this.submitted = true;
-    this.itemService.editItem({
-      id: item.id,
-      name: item.name,
-      category:item.category,
-      first_bid:item.first_bid,
-      buy_price: item.buy_price,
-      description: item.description,
-      number_of_bids: item.number_of_bids,
-      location: item.location,
-      sellerUsername: item.sellerUsername,
-      currently:item.currently,
-      started: item.started,
-      ends: item.ends,
-      auctionStarted: true
-    }).subscribe();
-  }
+    this.show = false
 
-  editAuction(item : Item){
-    this.submitted = true;
     this.itemService.editItem({
       id: item.id,
-      name: item.name,
-      category:item.category,
-      first_bid:item.first_bid,
-      buy_price: item.buy_price,
-      description: item.description,
+      name: this.name!.value,
+      category: this.category!.value,
+      first_bid: this.first_bid!.value,
+      buy_price: this.buy_price!.value,
+      description: this.description!.value,
       number_of_bids: item.number_of_bids,
-      location: item.location,
+      location: this.location!.value,
       sellerUsername: item.sellerUsername,
       currently: item.currently,
       started: item.started,
       ends: item.ends,
       auctionStarted: false
     }).subscribe();
+
+    location.reload();
   }
 
-  showEdit(){
+  showEdit(item: Item) {
+    console.log(item);
+    this.edititemForm = this.fb.group({
+      name: [item.name,],
+      category: [item.category],
+      buy_price: [item.buy_price],
+      first_bid: [item.first_bid],
+      location: [item.location],
+      description: [item.description]
+    });
+
+
     this.show = true;
+    this.item = item;
   }
 
-  openEdit(item: Item) {
-    this.edititemForm.patchValue( {
+  showStart(item: Item) {
+    console.log(item);
+    this.startitemForm = this.fb.group({
+        ends: [item.ends, [Validators.required]]
+      }, {validator: Valid_date('ends')}
+    );
+
+    this.startshow = true;
+    this.item = item;
+  }
+
+  startAuction(item: Item) {
+    let dateTime = new Date();
+    this.submitted = true;
+    this.itemService.editItem({
       id: item.id,
       name: item.name,
-      category:item.category,
-      first_bid:item.first_bid,
+      category: item.category,
+      first_bid: item.first_bid,
       buy_price: item.buy_price,
       description: item.description,
       number_of_bids: item.number_of_bids,
       location: item.location,
       sellerUsername: item.sellerUsername,
-      currently:item.currently,
-      started: item.started,
-      ends: item.ends,
-      auctionStarted: false
-    });
+      currently: item.currently,
+      started: dateTime as unknown as string,
+      ends: this.ends!.value,
+      auctionStarted: true
+    }).subscribe();
+
+    this.startshow = false;
+
+    location.reload();
   }
 
+  deleteItem(item: Item) {
+    this.itemService.deleteItem(item.id!).subscribe(item=>this.item);
+    location.reload();
+  }
+}
 
+function Valid_date(controlName: string) {
+  //check if date is valid
+  let dateTime = new Date() // current date and time.
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+
+    if(controlName >( dateTime as unknown as string)){
+      control.setErrors({ Valid_date: true });
+    } else {
+      control.setErrors(null);
+    }
+  }
+}
 
 

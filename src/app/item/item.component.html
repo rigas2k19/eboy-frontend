@@ -1,7 +1,10 @@
 <p>Items For Sale</p>
 
+<a href="/items/add">Add Item</a>
+
 <div class="container">
   <ul *ngFor='let item of items'>
+    <div *ngIf="item.auctionStarted" >
       <div class="card" style="width: 18rem;">
         <!--
         <img src="..." class="card-img-top" alt="...">
@@ -11,7 +14,6 @@
           <p class="card-text">{{item.description}}</p>
         </div>
         <ol class="list-group list-group-flush">
-
           <li class="list-group-item">ItemId: {{item.id}} </li>
           <li class="list-group-item">Category: {{item.category}} </li>
           <li class="list-group-item">Currently: {{item.currently}} </li>
@@ -29,6 +31,8 @@
           <a href="#" class="card-link">Another link</a>
         </div>
       </div>
+    </div>
   </ul>
 </div>
+
 <router-outlet></router-outlet>

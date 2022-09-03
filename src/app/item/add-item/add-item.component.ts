@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ItemService} from "../../services/item.service";
 import {Item} from "../../model/item";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-item',
@@ -15,7 +16,7 @@ export class AddItemComponent implements OnInit {
   buy_price = 0;
   username!: string;
 
-  constructor(private service: ItemService, private fb:FormBuilder) { }
+  constructor(private service: ItemService, private fb:FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
@@ -39,8 +40,6 @@ export class AddItemComponent implements OnInit {
   get category(){return this.additemForm.get('category');}
   get buyprice(){return this.additemForm.get('buyprice');}
   get firstbid(){return this.additemForm.get('firstbid');}
-  //get start(){return this.additemForm.get('start');}
- // get finish(){return this.additemForm.get('finish');}
   get description(){return this.additemForm.get('description');}
   get location(){return this.additemForm.get('location');}
 
@@ -55,7 +54,8 @@ export class AddItemComponent implements OnInit {
     if(!(this.buyprice!.value == undefined)){
       this.buy_price = this.buyprice!.value;
     }
-
+    console.log(this.buy_price);  // 0
+    console.log(this.buyprice!.value);  //190
     this.service.addItem({
       id:0,
       name:this.name!.value,
