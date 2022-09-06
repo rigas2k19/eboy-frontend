@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction:row;
+}
+
+.card-body{
+  background-color: lightblue;
+}
+
+.card {display:inline-block;}
+
+
+card{
+  margin-top: 10px;
+  border: none;
+  width: 600px;
+  padding: 40px;
+  position: absolute;
+  top: -30000%;
+  left: 100%;
+  transform: translate(-50%, 50%);
+  background: lightblue;
+}
+
+.route{
+  right: 15px;
+  top: 83%;
+  position: absolute;
+}
+
+.alert{
+  color: red;
+}

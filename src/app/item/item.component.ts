@@ -10,7 +10,8 @@ import {ItemService} from "../services/item.service";
 })
 export class ItemComponent implements OnInit {
   items: Item[] = [];
-  constructor(private service: ItemService) { }
+
+  constructor(private service: ItemService, private router: Router) { }
 
   ngOnInit(): void {
     this.service.getItems().subscribe(items => this.items = items);

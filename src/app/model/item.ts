@@ -1,4 +1,4 @@
-import {Time} from "@angular/common";
+import {Bid} from "./bid";
 
 export class Item{
   id: number | undefined;

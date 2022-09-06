@@ -69,7 +69,7 @@ export class AddItemComponent implements OnInit {
       ends:"0001-01-01T00:00:00",
       sellerUsername:this.username,
       description:this.description!.value,
-      auctionStarted: false
+      auctionStarted: false,
     }).subscribe();
 
     this.router.navigate(["/users/items"]);
