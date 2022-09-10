@@ -39,20 +39,18 @@ export class ItemService {
   }
 
   public storeItem(item:Item):void{
-    //this.globalItem = item;
     this.globalItem = item;
     localStorage.setItem('itemId', JSON.stringify({id: this.globalItem.id}));
   }
 
   public getstoredItem(): number{
     const raw = JSON.parse(localStorage.getItem('itemId') || '{}');
-    //<333333333333333333333333333333333333333333333333333333333333
     return Object(raw)["id"];
   }
 
-  public addBid(bid:Bid):Observable<Bid>{
-      return this.http.post<Bid>(this.addBidUrl, bid);
+  public addBid(bid:Bid,itemId:number):Observable<Bid>{
+    console.log(bid);
+    return this.http.post<Bid>(this.addBidUrl + (itemId.toString()) + "/bids", bid);
   }
-
 
 }

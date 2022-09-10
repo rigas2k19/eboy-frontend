@@ -15,45 +15,65 @@ export class ShowItemComponent implements OnInit {
   showbidform:boolean = false;
   submitted:boolean = false;
   BidForm!: FormGroup;
+  showConfirmation : boolean = false;
+  username!:string;
 
   constructor(private itemservice : ItemService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-
     this.itemId = this.itemservice.getstoredItem();
     this.itemservice.getItem(this.itemId).subscribe(item => this.item = item );
-    console.log(this.itemId);
+    let token = localStorage.getItem('token');
+    let decodedJWT = JSON.parse(window.atob(token!.split('.')[1]));
 
+    console.log('name: ' + decodedJWT.username);    // get username of user that is logged in he is the one placing the bid
+    this.username = decodedJWT.username;
+
+    console.log(this.itemId);
   }
 
   get bid() {
     return this.BidForm.get('bid');
   }
 
-
-
   placeBid(){
     this.submitted = true;
-    this.itemservice.addBid({id:0, bidder:"token", item: this.item, amount: this.bid!.value, time: ""})
-    this.itemservice.editItem({
-      id: this.item.id,
-      name: this.item.name,
-      category: this.item.category,
-      first_bid: this.item.first_bid,
-      buy_price: this.item.buy_price,
-      description: this.item.description,
-      number_of_bids: (this.item.number_of_bids)! + 1,
-      location: this.item.location,
-      sellerUsername: this.item.sellerUsername,
-      currently: this.item.currently,
-      started: this.item.started,
-      ends: this.item.ends,
-      auctionStarted: true,
-    }).subscribe();
+
+    if (this.BidForm.invalid) {
+     //return;
+    }
+
+    if(confirm('Do you really want to place this bid ?')){
+      this.itemservice.editItem({
+        id: this.item.id,
+        name: this.item.name,
+        category: this.item.category,
+        first_bid: this.item.first_bid,
+        buy_price: this.item.buy_price,
+        description: this.item.description,
+        number_of_bids: (this.item.number_of_bids)! + 1,
+        location: this.item.location,
+        sellerUsername: this.item.sellerUsername,
+        currently: this.bid!.value,     //change current value to last bid.
+        started: this.item.started,
+        ends: this.item.ends,
+        auctionStarted: true,
+      }).subscribe();
+
+      this.itemservice.addBid({
+        id:0,
+        bidder:this.username,
+        time: (dateTime as unknown as string),
+        amount: this.bid!.value,
+        item: this.item
+      }, this.item.id! ).subscribe();
+    }
 
     this.showbidform = false;
+    this.showConfirmation = false;
 
+    location.reload();
   }
 
   showBidForm(): void{
@@ -62,6 +82,10 @@ export class ShowItemComponent implements OnInit {
         bid: ['', [Validators.required]]
       }, {validator: Valid_price()}
     );
+  }
+
+  showConfirm():void{
+    this.showConfirmation = true;
   }
 }
 
