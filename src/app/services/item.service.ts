@@ -11,7 +11,7 @@ import {Bid} from "../model/bid";
 })
 export class ItemService {
   private itemsUrl = 'https://localhost:8443/items';
-  private addBidUrl = 'https://localhost:8443/items/bids'
+  private addBidUrl = 'https://localhost:8443/items/'
   public globalItem: Item = new Item();
 
   constructor(private http: HttpClient) { }

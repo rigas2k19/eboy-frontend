@@ -164,7 +164,7 @@ function Valid_date(controlName: string) {
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
 
-    if(controlName >( dateTime as unknown as string)){
+    if(controlName <( dateTime as unknown as string)){
       control.setErrors({ Valid_date: true });
     } else {
       control.setErrors(null);

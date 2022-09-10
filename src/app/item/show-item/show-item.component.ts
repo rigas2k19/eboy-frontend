@@ -38,6 +38,7 @@ export class ShowItemComponent implements OnInit {
   }
 
   placeBid(){
+    let dateTime = new Date();
     this.submitted = true;
 
     if (this.BidForm.invalid) {
@@ -80,7 +81,7 @@ export class ShowItemComponent implements OnInit {
     this.showbidform = true;
     this.BidForm = this.fb.group({
         bid: ['', [Validators.required]]
-      }, {validator: Valid_price()}
+      }, {validator: Valid_price('bid', this.item)}
     );
   }
 
@@ -89,6 +90,29 @@ export class ShowItemComponent implements OnInit {
   }
 }
 
-function Valid_price(){
+function Valid_price(controlName: string, item : Item){
   //check if bid price is valid
+  let bid = Number(controlName);
+  return(formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+
+    if(item.currently === 0){
+      //this is the first bid
+      if(bid >= (item.first_bid!)) {    //check if bid is greater or equal to first bid
+        //valid bid
+        control.setErrors(null);
+      }else{
+        //invalid bid
+        control.setErrors({ Valid_date: true });
+      }
+    }else{
+      //this is not the first bid
+      if(bid > item.currently!){     //check if bid is greater to current bid
+        control.setErrors(null);
+      }else{
+        //invalid bid
+        control.setErrors({ Valid_date: true });
+      }
+    }
+  }
 }

@@ -26,11 +26,19 @@
 <div class="overlay" *ngIf="showbidform == true ">
   <div class="popup">
     <div class="modal-body">
-      <form [formGroup]="BidForm" (ngSubmit)="placeBid()" novalidate>
+      <form [formGroup]="BidForm" (ngSubmit)="placeBid()">
         <div class="form-group">
           <label for="bid">Your Bid </label>
           <div class="input-group">
-            <input type="number" step="any" formControlName="bid" class="form-control" id="bid">
+            <input type="number" step="any" formControlName="bid" class="form-control" id="bid" name="bid">
+            <div *ngIf="bid!.errors" class ="alert">
+              <div *ngIf="bid!.errors?.['required']">
+                Bid is required
+              </div>
+              <div *ngIf="bid!.errors?.['Valid_price']">
+                Bid must be greater than last bid
+              </div>
+            </div>
           </div>
           <div class="border text-center">
             <button type="submit" data-dismiss="modal" class="btn btn-info" > Place Bid </button>
