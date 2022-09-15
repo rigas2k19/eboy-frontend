@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./show-item.component.css']
 })
 export class ShowItemComponent implements OnInit {
+  public newbid:Bid = new Bid();
   public item:Item = new Item();
   public itemId!:number;
   showbidform:boolean = false;
@@ -37,12 +38,15 @@ export class ShowItemComponent implements OnInit {
     return this.BidForm.get('bid');
   }
 
+  get bidform(){return this.BidForm.controls;}
+
   placeBid(){
     let dateTime = new Date();
     this.submitted = true;
 
     if (this.BidForm.invalid) {
-     //return;
+      console.log("form is invalid");
+      return;
     }
 
     if(confirm('Do you really want to place this bid ?')){
@@ -82,7 +86,7 @@ export class ShowItemComponent implements OnInit {
     this.showbidform = true;
     this.BidForm = this.fb.group({
         bid: ['', [Validators.required]]
-      }, {validator: Valid_price('bid', this.item)}
+      }, {validator: Valid_price( 'bid', this.item)}
     );
   }
 
@@ -129,26 +133,26 @@ export class ShowItemComponent implements OnInit {
 
 function Valid_price(controlName: string, item : Item){
   //check if bid price is valid
-  let bid = Number(controlName);
   return(formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
-
     if(item.currently === 0){
       //this is the first bid
-      if(bid >= (item.first_bid!)) {    //check if bid is greater or equal to first bid
+      if(control.value >= (item.first_bid!)) {    //check if bid is greater or equal to first bid
         //valid bid
         control.setErrors(null);
       }else{
         //invalid bid
-        control.setErrors({ Valid_date: true });
+        control.setErrors({ Valid_price: true });
       }
     }else{
+      console.log("not first bid")
+      console.log(control.value>item.currently!);
       //this is not the first bid
-      if(bid > item.currently!){     //check if bid is greater to current bid
+      if(control.value > item.currently!){     //check if bid is greater to current bid
         control.setErrors(null);
       }else{
         //invalid bid
-        control.setErrors({ Valid_date: true });
+        control.setErrors({ Valid_price: true });
       }
     }
   }

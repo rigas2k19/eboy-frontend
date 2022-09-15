@@ -7,7 +7,7 @@
         <!--
         <img src="..." class="card-img-top" alt="...">
         -->
-        <div class="card-body">
+        <div class="card-body" *ngIf="item.auctionEnds == false">
           <h5 class="card-title">{{item.name}}</h5>
           <p class="card-text">{{item.description}}</p>
         </div>
@@ -46,7 +46,7 @@
 
         <button type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="showStart(item)">Start auction</button>
         <button id="btn" type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="showEdit(item)">Edit Auction</button>
-        <button id="delete"  class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="deleteItem(item)">Delete</button>
+        <button id="delete"  class="btn btn-primary" *ngIf="item.auctionStarted == false || item.number_of_bids == 0" (click)="deleteItem(item)">Delete</button>
 
       </div>
     </ng-container>

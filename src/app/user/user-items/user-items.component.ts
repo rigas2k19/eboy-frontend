@@ -4,6 +4,7 @@ import {Item} from "../../model/item";
 import {ItemService} from "../../services/item.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-user-items',
@@ -162,13 +163,16 @@ export class UserItemsComponent implements OnInit {
 
 function Valid_date(controlName: string) {
   //check if date is valid
-  let dateTime = new Date() // current date and time.
+  const date = new Date();
+
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
-
-    if(controlName <( dateTime as unknown as string)){
+    let form_date = new Date(control.value);
+    if(form_date < date){
+      console.log("invalid");
       control.setErrors({ Valid_date: true });
     } else {
+      console.log("valid");
       control.setErrors(null);
     }
   }

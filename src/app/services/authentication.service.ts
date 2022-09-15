@@ -49,7 +49,7 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem(this.TOKEN_NAME);
-    //this.userSubject.next(null);   enimeronei oti o xristis aposundethike
+    this._isLoggedIn$.next(false);
    this.router.navigate(['/login']);
   }
 }

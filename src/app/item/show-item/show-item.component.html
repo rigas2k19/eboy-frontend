@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" *ngIf="item.auctionEnds == false">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">{{item.name}}</h5>
@@ -31,8 +31,8 @@
         <div class="form-group">
           <label for="bid">Your Bid </label>
           <div class="input-group">
-            <input type="number" step="any" formControlName="bid" class="form-control" id="bid" name="bid">
-            <div *ngIf="bid!.errors" class ="alert">
+            <input type="number" step="any" formControlName="bid" class="form-control" id="bid" name="bid" [(ngModel)]="newbid.amount">
+            <div *ngIf=" submitted && bid!.errors" class ="alert">
               <div *ngIf="bid!.errors?.['required']">
                 Bid is required
               </div>
