@@ -14,4 +14,5 @@ export class Item{
   sellerUsername: string | undefined;
   description: string | undefined;
   auctionStarted: boolean | undefined; // gia to add
+  auctionEnds: boolean | undefined;
 }

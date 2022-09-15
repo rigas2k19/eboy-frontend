@@ -70,6 +70,7 @@ export class AddItemComponent implements OnInit {
       sellerUsername:this.username,
       description:this.description!.value,
       auctionStarted: false,
+      auctionEnds: false,
     }).subscribe();
 
     this.router.navigate(["/users/items"]);

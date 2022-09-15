@@ -11,7 +11,10 @@ import {AuthenticationService} from "./services/authentication.service";
 })
 export class AppComponent {
   title = 'eboy-frontend';
-
   constructor(public authService: AuthenticationService){ }
 
+  logout(){
+    this.authService.logout();
+  }
+// :(
 }

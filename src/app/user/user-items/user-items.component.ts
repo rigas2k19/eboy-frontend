@@ -96,6 +96,7 @@ export class UserItemsComponent implements OnInit {
       started: item.started,
       ends: item.ends,
       auctionStarted: false,
+      auctionEnds: false,
     }).subscribe();
 
     location.reload();
@@ -145,6 +146,7 @@ export class UserItemsComponent implements OnInit {
       started: dateTime as unknown as string,
       ends: this.ends!.value,
       auctionStarted: true,
+      auctionEnds: false,
     }).subscribe();
 
     this.startshow = false;

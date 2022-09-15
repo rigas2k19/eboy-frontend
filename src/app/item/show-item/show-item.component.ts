@@ -60,6 +60,7 @@ export class ShowItemComponent implements OnInit {
         started: this.item.started,
         ends: this.item.ends,
         auctionStarted: true,
+        auctionEnds:false,
       }).subscribe();
 
       this.itemservice.addBid({
@@ -88,7 +89,43 @@ export class ShowItemComponent implements OnInit {
   showConfirm():void{
     this.showConfirmation = true;
   }
+
+  buyNow(){
+    if(confirm('Do you really want to buy this item for' + this.item.buy_price + '$ ?')){
+      let dateTime = new Date();
+
+      this.itemservice.editItem({
+        id: this.item.id,
+        name: this.item.name,
+        category: this.item.category,
+        first_bid: this.item.first_bid,
+        buy_price: this.item.buy_price,
+        description: this.item.description,
+        number_of_bids: (this.item.number_of_bids)! + 1,
+        location: this.item.location,
+        sellerUsername: this.item.sellerUsername,
+        currently: this.item.buy_price!,     //change current value to last bid.
+        started: this.item.started,
+        ends: this.item.ends,
+        auctionStarted: true,
+        auctionEnds: true,
+      }).subscribe();
+
+      this.itemservice.addBid({
+        id:0,
+        bidder:this.username,
+        time: (dateTime as unknown as string),
+        amount: this.item.buy_price!,
+        item: this.item
+      }, this.item.id! ).subscribe();
+    }
+
+    location.reload();
+  }
+
 }
+
+
 
 function Valid_price(controlName: string, item : Item){
   //check if bid price is valid
