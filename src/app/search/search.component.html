@@ -1,0 +1,11 @@
+<p>search works!</p>
+
+<label>Search by category</label>
+<select name="category" (change)="ChangeCategory($event)" class="form-control" style="width:200px;">
+  <option>Select category</option>
+  <option [value]="cat[0]" *ngFor=" let cat of categories">
+    {{cat[0]}} ({{cat[1]}})
+  </option>
+</select>
+
+<p>Selected Value: {{SelectedCategory}}</p>
