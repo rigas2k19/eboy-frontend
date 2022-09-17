@@ -1,3 +1,4 @@
+
 <h1 class ="title">
   <span style = "color:red"> E</span>
   <span style = "color:blue">b</span>
@@ -5,30 +6,48 @@
   <span style = "color:green">y</span>
 </h1>
 
-<div *ngIf="authService.isLoggedIn$ | async">
-  <div class="topnav">
-    <a routerLink="/items" class="route">Auctions</a>
-    <!--
-    <a href="/items/add">Add Item</a>
-    -->
+<router-outlet>
+  <div *ngIf="authService.isLoggedIn$ | async">
+    <nav class="topnav">
+      <a routerLink="/items" class="route">Auctions</a>
+      <a href="/users/items">My Items</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#profile">Profile
+        <ul>
+          <li><a href="#history"> History </a></li>
+          <li><a><button type="submit" (click)="logout()" > Logout </button></a></li>
+        </ul>
+      </a>
+    </nav>
 
-    <a href="/users/items">My Items</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <button type="submit" (click)="logout()" > Logout </button>
+    <div style="padding-left:16px">
+      <h2>Top Navigation Example</h2>
+      <p>Some content..</p>
+    </div>
+
   </div>
-
-  <div style="padding-left:16px">
-    <h2>Top Navigation Example</h2>
-    <p>Some content..</p>
-  </div>
-
-</div>
+</router-outlet>
 <!--
-<nav>
-  <a routerLink="/users">Users </a>
-  <a routerLink="/delete">Delete</a>
-</nav>-->
+<header>
+  <router-outlet>
+    <div *ngIf="authService.isLoggedIn$ | async">
+      <nav class="navbar">
+        <ul>
+          <li><a href="/StartingPage">Home</a></li>
+          <li><a href="/items">Auctions</a></li>
+          <li><a href="/users/items">My Items</a></li>
+          <li><a href="/users/items">Other</a></li>
+          <li><a href="/StartingPage">Profile</a>
+            <ul>
+              <li><button type="submit" (click)="logout()"> Logout </button></li>
+              <li><a href="/StartingPage">View Profile</a>
+            </ul>
+          </li>
 
-<router-outlet></router-outlet>
-
+        </ul>
+      </nav>
+    </div>
+  </router-outlet>
+</header>
+-->

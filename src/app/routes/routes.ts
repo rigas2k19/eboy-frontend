@@ -11,6 +11,7 @@ import {AddItemComponent} from "../item/add-item/add-item.component";
 import {ItemComponent} from "../item/item.component";
 import {UserItemsComponent} from "../user/user-items/user-items.component";
 import {ShowItemComponent} from "../item/show-item/show-item.component";
+import {SearchComponent} from "../search/search.component";
 
 export const  appRoutes = [
   {

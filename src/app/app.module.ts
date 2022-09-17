@@ -19,6 +19,7 @@ import { ItemComponent } from './item/item.component';
 import { AddItemComponent } from './item/add-item/add-item.component';
 import { UserItemsComponent } from './user/user-items/user-items.component';
 import { ShowItemComponent } from './item/show-item/show-item.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -36,6 +37,7 @@ import { ShowItemComponent } from './item/show-item/show-item.component';
     AddItemComponent,
     UserItemsComponent,
     ShowItemComponent,
+    SearchComponent,
   ],
     imports: [
         BrowserModule,

@@ -9,3 +9,11 @@
 
 .card {display:inline-block;}
 
+.search-wrapper{
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.hide{
+  display: none;
+}
