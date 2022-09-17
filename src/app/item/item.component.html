@@ -5,7 +5,7 @@
 
 <div class="container">
   <ul *ngFor='let item of items'>
-    <div *ngIf="item.auctionStarted" >
+    <div *ngIf="item.auctionStarted && item.auctionEnds == false" >
       <div class="card" style="width: 18rem;">
         <!--
         <img src="..." class="card-img-top" alt="...">

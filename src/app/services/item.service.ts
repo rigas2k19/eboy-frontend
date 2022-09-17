@@ -12,6 +12,7 @@ import {Bid} from "../model/bid";
 export class ItemService {
   private itemsUrl = 'https://localhost:8443/items';
   private addBidUrl = 'https://localhost:8443/items/'
+  private caturl = 'https://localhost:8443/items/categories'
   public globalItem: Item = new Item();
 
   constructor(private http: HttpClient) { }
@@ -51,6 +52,11 @@ export class ItemService {
   public addBid(bid:Bid,itemId:number):Observable<Bid>{
     console.log(bid);
     return this.http.post<Bid>(this.addBidUrl + (itemId.toString()) + "/bids", bid);
+  }
+
+  //get categories
+  public getCategories():Observable<Object[]>{
+    return this.http.get<Object[]>(this.caturl);
   }
 
 }

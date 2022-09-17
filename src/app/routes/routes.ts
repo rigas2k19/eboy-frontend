@@ -80,5 +80,9 @@ export const  appRoutes = [
     ]
 
   },
+  {
+    path:'search',
+    component: SearchComponent
+  },
   { path: '**', redirectTo: '' }
 ];
