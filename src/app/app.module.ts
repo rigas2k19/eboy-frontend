@@ -20,8 +20,11 @@ import { AddItemComponent } from './item/add-item/add-item.component';
 import { UserItemsComponent } from './user/user-items/user-items.component';
 import { ShowItemComponent } from './item/show-item/show-item.component';
 import { SearchComponent } from './search/search.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { SearchFilterPipe } from './search/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -38,14 +41,19 @@ import { SearchComponent } from './search/search.component';
     UserItemsComponent,
     ShowItemComponent,
     SearchComponent,
+    SearchFilterPipe,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        RouterModule.forRoot(appRoutes),
-        FormsModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    Ng2SearchPipeModule
+  ],
   providers: [JwtInterceptorProvider, UserService, HttpClient],
   bootstrap: [AppComponent]
 })
