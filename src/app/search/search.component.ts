@@ -8,8 +8,11 @@ import {Item} from "../model/item";
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  items: Item[] = [];
   categories : Object[] = [];
+  disp_cat: [string, number][] = [];
   SelectedCategory:any;
+  searchText!: string;
 
   ChangeCategory(e : any ){
     this.SelectedCategory = e.target.value;

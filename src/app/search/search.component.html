@@ -1,11 +1,40 @@
-<p>search works!</p>
+<div class="container">
+  <div class="row">
+    <div class="search-bar">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for item id or name">
+    </div>
 
-<label>Search by category</label>
-<select name="category" (change)="ChangeCategory($event)" class="form-control" style="width:200px;">
-  <option>Select category</option>
-  <option [value]="cat[0]" *ngFor=" let cat of categories">
-    {{cat[0]}} ({{cat[1]}})
-  </option>
-</select>
+    <mat-form-field appearance="fill">
+      <mat-label>Categories</mat-label>
+      <mat-select [(ngModel)]="SelectedCategory" (change)="ChangeCategory($event)" name="category">
+        <mat-option *ngFor="let cat of disp_cat" [value]="cat[0]">
+          {{cat[0]}}   ({{cat[1]}})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>Selected Value: {{SelectedCategory}}</p>
 
-<p>Selected Value: {{SelectedCategory}}</p>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Item Name</th>
+        <th>Category</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items | searchFilter:searchText:['name', 'category']; let i = index">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.category}}</td>
+          <td>{{item.description}}</td>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
