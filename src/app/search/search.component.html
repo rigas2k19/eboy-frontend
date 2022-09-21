@@ -12,7 +12,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <p>Selected Value: {{SelectedCategory}}</p>
 
     <table class="table table-striped">
       <thead>
@@ -24,11 +23,11 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of items | searchFilter:searchText:['name', 'category']; let i = index">
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.category}}</td>
-          <td>{{item.description}}</td>
+        <tr *ngFor="let item of items | searchFilter: [searchText, searchText, SelectedCategory]:['name','description', 'category']">
+          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.id}}</td>
+          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.name}}</td>
+          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.category}}</td>
+          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.description}}</td>
       </tbody>
     </table>
   </div>
