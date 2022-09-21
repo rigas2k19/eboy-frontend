@@ -3,6 +3,7 @@ import {Item} from "../../model/item";
 import {Bid} from "../../model/bid";
 import {ItemService} from "../../services/item.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-show',
@@ -19,12 +20,38 @@ export class ShowItemComponent implements OnInit {
   showConfirmation : boolean = false;
   username!:string;
 
+  private map!: L.Map;
+  private centroid!: L.LatLngExpression;
+
+  private initMap(): void{
+
+    let coordinates = this.item.location!.split(",");
+    let x = Number(coordinates[0]);
+    let y = Number(coordinates[1]);
+    console.log("x: " + x, "y: " + y);
+    this.centroid = [x,y];
+
+    this.map = L.map('map').setView(this.centroid, 12);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(this.map);
+
+    let marker = L.marker([x, y]).addTo(this.map);
+
+  }
+
   constructor(private itemservice : ItemService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.itemId = this.itemservice.getstoredItem();
-    this.itemservice.getItem(this.itemId).subscribe(item => this.item = item );
+    this.itemservice.getItem(this.itemId).subscribe(item => {
+        this.item = item
+        this.initMap();
+      }
+    );
     let token = localStorage.getItem('token');
     let decodedJWT = JSON.parse(window.atob(token!.split('.')[1]));
 

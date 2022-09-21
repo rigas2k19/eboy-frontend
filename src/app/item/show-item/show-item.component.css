@@ -90,3 +90,22 @@ card{
 #delete{
   background-color: orangered;
 }
+
+.map-container{
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  margin: 30px;
+  width: 40%;
+}
+
+.map-frame{
+  border: 2px solid black;
+  height: 80%;
+}
+
+#map{
+  height: 100%;
+}
