@@ -59,4 +59,8 @@ export class ItemService {
     return this.http.get<Object[]>(this.caturl);
   }
 
+  public getCountries(): Observable<Object[]>{
+    return this.http.get<Object[]>("https://localhost:8443/items/countries")
+  }
+
 }

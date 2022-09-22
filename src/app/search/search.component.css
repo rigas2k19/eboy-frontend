@@ -1,6 +1,18 @@
 
-.search-bar:focus{
-  background-color: lightpink;
+.search-bar{
+  margin: auto;
+  width: 53%;
+  padding: 10px;
 }
 
+.container{
+  margin: auto;
+  width: 55%;
+  padding: 10px;
+}
 
+.table{
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}

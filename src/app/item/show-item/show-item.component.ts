@@ -86,6 +86,7 @@ export class ShowItemComponent implements OnInit {
         description: this.item.description,
         number_of_bids: (this.item.number_of_bids)! + 1,
         location: this.item.location,
+        country: this.item.country,
         sellerUsername: this.item.sellerUsername,
         currently: this.bid!.value,     //change current value to last bid.
         started: this.item.started,
@@ -134,6 +135,7 @@ export class ShowItemComponent implements OnInit {
         description: this.item.description,
         number_of_bids: (this.item.number_of_bids)! + 1,
         location: this.item.location,
+        country: this.item.country,
         sellerUsername: this.item.sellerUsername,
         currently: this.item.buy_price!,     //change current value to last bid.
         started: this.item.started,

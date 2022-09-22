@@ -55,6 +55,10 @@ export class UserItemsComponent implements OnInit {
     return this.edititemForm.get('location');
   }
 
+  get country(){
+    return this.edititemForm.get('country');
+  }
+
   get ends() {
     return this.startitemForm.get('ends');
   }
@@ -92,6 +96,7 @@ export class UserItemsComponent implements OnInit {
       description: this.description!.value,
       number_of_bids: item.number_of_bids,
       location: this.location!.value,
+      country:this.country!.value,
       sellerUsername: item.sellerUsername,
       currently: item.currently,
       started: item.started,
@@ -111,6 +116,7 @@ export class UserItemsComponent implements OnInit {
       buy_price: [item.buy_price],
       first_bid: [item.first_bid],
       location: [item.location],
+      country: [item.country],
       description: [item.description]
     });
 
@@ -142,6 +148,7 @@ export class UserItemsComponent implements OnInit {
       description: item.description,
       number_of_bids: item.number_of_bids,
       location: item.location,
+      country:item.country,
       sellerUsername: item.sellerUsername,
       currently: item.currently,
       started: dateTime as unknown as string,
@@ -170,6 +177,8 @@ function Valid_date(controlName: string) {
     let form_date = new Date(control.value);
     if(form_date < date){
       console.log("invalid");
+      console.log(form_date);
+      console.log(date);
       control.setErrors({ Valid_date: true });
     } else {
       console.log("valid");

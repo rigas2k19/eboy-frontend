@@ -25,6 +25,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { SearchFilterPipe } from './search/search-filter.pipe';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { SearchFilterPipe } from './search/search-filter.pipe';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatInputModule
   ],
   providers: [JwtInterceptorProvider, UserService, HttpClient],
   bootstrap: [AppComponent]

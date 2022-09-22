@@ -31,6 +31,7 @@ export class AddItemComponent implements OnInit {
       firstbid: ['', [Validators.required]],
       description: ['', [Validators.required]],
       location: ['', [Validators.required]],
+      country: ['', [Validators.required]]
     });
   }
 
@@ -42,7 +43,7 @@ export class AddItemComponent implements OnInit {
   get firstbid(){return this.additemForm.get('firstbid');}
   get description(){return this.additemForm.get('description');}
   get location(){return this.additemForm.get('location');}
-
+  get country(){return this.additemForm.get('country');}
 
   onSubmit(){
     this.submitted = true;
@@ -65,6 +66,7 @@ export class AddItemComponent implements OnInit {
       first_bid:this.firstbid!.value,
       number_of_bids:0,
       location:this.location!.value,
+      country:this.country!.value,
       started:"0001-01-01T00:00:00",
       ends:"0001-01-01T00:00:00",
       sellerUsername:this.username,
