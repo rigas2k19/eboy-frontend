@@ -1,18 +1,42 @@
+<div class="search-bar">
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for item id or name">
+</div>
+
 <div class="container">
+  <label>Search filters</label>
   <div class="row">
-    <div class="search-bar">
-      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for item id or name">
-    </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Categories</mat-label>
-      <mat-select [(ngModel)]="SelectedCategory" (change)="ChangeCategory($event)" name="category">
-        <mat-option *ngFor="let cat of disp_cat" [value]="cat[0]">
-          {{cat[0]}}   ({{cat[1]}})
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Categories</mat-label>
+        <mat-select [(ngModel)]="SelectedCategory" (change)="ChangeCategory($event)" name="category">
+          <mat-option *ngFor="let cat of disp_cat" [value]="cat[0]">
+            {{cat[0]}}   ({{cat[1]}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Countries</mat-label>
+        <mat-select [(ngModel)]="SelectedCountry" (change)="ChangeCountry($event)" name="country">
+          <mat-option *ngFor="let country of disp_countries" [value]="country[0]">
+            {{country[0]}}   ({{country[1]}})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"  [hideRequiredMarker]="">
+        <mat-label>Minimum price</mat-label>
+        <input type="number" min="0" step = "any" [(ngModel)]="min" (change)="ChangeMin($event)" numbersOnly matInput placeholder="0" name="min">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"  [hideRequiredMarker]="">
+        <mat-label>Maximum price</mat-label>
+        <input type="number" min="0" step = "any" [(ngModel)]="max" (change)="ChangeMax($event)" numbersOnly matInput placeholder="-" name="max">
+      </mat-form-field>
+
+
+    </form>
     <table class="table table-striped">
       <thead>
       <tr>
@@ -20,20 +44,19 @@
         <th>Item Name</th>
         <th>Category</th>
         <th>Description</th>
+        <th>Current Price</th>
+        <th>Country</th>
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of items | searchFilter: [searchText, searchText, SelectedCategory]:['name','description', 'category']">
-          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.id}}</td>
-          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.name}}</td>
-          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.category}}</td>
-          <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.description}}</td>
+      <tr *ngFor="let item of items | searchFilter: [searchText,searchText, SelectedCategory, min.toString()+'-'+max.toString(), SelectedCountry]:['name','description', 'category', 'currently', 'country']">
+        <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.id}}</td>
+        <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.name}}</td>
+        <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.category}}</td>
+        <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.description}}</td>
+        <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.currently}}</td>
+        <td *ngIf="!item.auctionEnds && item.auctionStarted">{{item.country}}</td>
       </tbody>
     </table>
   </div>
 </div>
-
-
-
-
-
