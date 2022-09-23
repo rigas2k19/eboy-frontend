@@ -31,8 +31,8 @@ export class ItemService {
   }
 
   // Delete Item //
-  public deleteItem(itemId: number): Observable<User>{
-    return this.http.delete<User>(this.itemsUrl+"/"+itemId);
+  public deleteItem(itemId: number): Observable<Item>{
+    return this.http.delete<Item>(this.itemsUrl+"/"+itemId);
   }
 
   public editItem(item: Item): Observable<Item>{

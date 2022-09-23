@@ -12,6 +12,9 @@ import {ItemComponent} from "../item/item.component";
 import {UserItemsComponent} from "../user/user-items/user-items.component";
 import {ShowItemComponent} from "../item/show-item/show-item.component";
 import {SearchComponent} from "../search/search.component";
+import {MessagesComponent} from "../messages/messages.component";
+import {SentComponent} from "../messages/sent/sent.component";
+import {ReceivedComponent} from "../messages/received/received.component";
 
 export const  appRoutes = [
   {
@@ -83,6 +86,23 @@ export const  appRoutes = [
   {
     path:'search',
     component: SearchComponent
+  },
+  {
+    path:'messages',
+    children: [
+      {
+        path:'sent',
+        component:SentComponent
+      },
+      {
+        path:'received',
+        component:ReceivedComponent
+      },
+      {
+        path:'',
+        component: MessagesComponent
+      },
+    ]
   },
   { path: '**', redirectTo: '' }
 ];

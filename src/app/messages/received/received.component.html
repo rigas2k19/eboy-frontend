@@ -1,0 +1,10 @@
+<div class="chatbox">
+  <ul *ngFor="let message of receivedMessages">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">From: {{message.senderUsername}}</h5>
+        <p class="card-text">{{message.message}}</p>
+      </div>
+    </div>
+  </ul>
+</div>

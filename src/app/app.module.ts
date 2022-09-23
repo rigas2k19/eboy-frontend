@@ -26,6 +26,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { SearchFilterPipe } from './search/search-filter.pipe';
 import {MatInputModule} from "@angular/material/input";
+import { MessagesComponent } from './messages/messages.component';
+import { ReceivedComponent } from './messages/received/received.component';
+import { SentComponent } from './messages/sent/sent.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import {MatInputModule} from "@angular/material/input";
     ShowItemComponent,
     SearchComponent,
     SearchFilterPipe,
+    MessagesComponent,
+    ReceivedComponent,
+    SentComponent,
   ],
   imports: [
     BrowserModule,
