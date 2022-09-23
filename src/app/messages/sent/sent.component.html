@@ -1,0 +1,11 @@
+<p>sent works!</p>
+<div class="chatbox">
+  <ul *ngFor="let message of sentMessages">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Sent to: {{message.receiverUsername}}</h5>
+        <p class="card-text">{{message.message}}</p>
+      </div>
+    </div>
+  </ul>
+</div>
