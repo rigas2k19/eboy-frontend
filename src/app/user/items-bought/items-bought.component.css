@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction:row;
+}
+
+.card-body{
+  background-color: lightblue;
+}
+
+.card {display:inline-block;}
+
+.search-wrapper{
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.hide{
+  display: none;
+}

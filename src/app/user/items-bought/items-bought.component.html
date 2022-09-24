@@ -1,0 +1,29 @@
+<div class="container">
+  <ul *ngFor='let item of itemsBought'>
+    <div *ngIf="item.auctionEnds == true" >
+      <div class="card" style="width: 18rem;">
+        <!--
+        <img src="..." class="card-img-top" alt="...">
+        -->
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.description}}</p>
+        </div>
+        <ol class="list-group list-group-flush">
+          <li class="list-group-item">ItemId: {{item.id}} </li>
+          <li class="list-group-item">Category: {{item.category}} </li>
+          <li class="list-group-item">Currently: {{item.currently}} </li>
+          <li class="list-group-item">Buy Price: {{item.buy_price}} </li>
+          <li class="list-group-item">First Bid: {{item.first_bid}} </li>
+          <li class="list-group-item">Number Of Bids: {{item.number_of_bids}} </li>
+          <li class="list-group-item">Location: {{item.location}} </li>
+          <li class="list-group-item">Country: {{item.country}} </li>
+          <li class="list-group-item">Started: {{item.started}} </li>
+          <li class="list-group-item">Ends: {{item.ends}} </li>
+          <li class="list-group-item">Seller: {{item.sellerUsername}} </li>
+          <li class="list-group-item"><button type="submit" (click)="goToMessages()"> Contact Seller </button> </li>
+        </ol>
+      </div>
+    </div>
+  </ul>
+</div>
