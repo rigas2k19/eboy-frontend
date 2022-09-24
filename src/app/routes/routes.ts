@@ -15,6 +15,7 @@ import {SearchComponent} from "../search/search.component";
 import {MessagesComponent} from "../messages/messages.component";
 import {SentComponent} from "../messages/sent/sent.component";
 import {ReceivedComponent} from "../messages/received/received.component";
+import {ItemsBoughtComponent} from "../user/items-bought/items-bought.component";
 
 export const  appRoutes = [
   {
@@ -38,6 +39,10 @@ export const  appRoutes = [
       {
         path: 'items',
         component: UserItemsComponent
+      },
+      {
+        path:'bought',
+        component: ItemsBoughtComponent
       },
     ]
   },

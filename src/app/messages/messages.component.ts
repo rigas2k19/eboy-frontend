@@ -19,7 +19,6 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
     let token = localStorage.getItem('token');
     let decodedJWT = JSON.parse(window.atob(token!.split('.')[1]));
-
     console.log('name: ' + decodedJWT.username);    // get username of user that is logged in
     this.username = decodedJWT.username;
 

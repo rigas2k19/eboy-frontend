@@ -29,6 +29,9 @@ import {MatInputModule} from "@angular/material/input";
 import { MessagesComponent } from './messages/messages.component';
 import { ReceivedComponent } from './messages/received/received.component';
 import { SentComponent } from './messages/sent/sent.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import { ItemsBoughtComponent } from './user/items-bought/items-bought.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,7 @@ import { SentComponent } from './messages/sent/sent.component';
     MessagesComponent,
     ReceivedComponent,
     SentComponent,
+    ItemsBoughtComponent,
   ],
   imports: [
     BrowserModule,

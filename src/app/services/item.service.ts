@@ -60,7 +60,14 @@ export class ItemService {
   }
 
   public getCountries(): Observable<Object[]>{
-    return this.http.get<Object[]>("https://localhost:8443/items/countries")
+    return this.http.get<Object[]>("https://localhost:8443/items/countries");
+  }
+
+  public getUsersLastBids(): Observable<number[]>{
+    let token = localStorage.getItem('token');
+    let decodedJWT = JSON.parse(window.atob(token!.split('.')[1]));
+    let username = decodedJWT.username;
+    return this.http.get<number[]>("https://localhost:8443/users/" + username + "/bought");
   }
 
 }

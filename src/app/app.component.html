@@ -1,4 +1,3 @@
-
 <h1 class ="title">
   <span style = "color:red"> E</span>
   <span style = "color:blue">b</span>
@@ -11,7 +10,7 @@
     <nav class="topnav">
       <a routerLink="/items" class="route">Auctions</a>
       <a href="/users/items">My Items</a>
-      <a href="#news">News</a>
+      <a href="/users/bought">Items Bought</a>
       <a href="#contact">Contact</a>
       <a href="#profile">Profile
         <ul>
@@ -21,33 +20,6 @@
       </a>
     </nav>
 
-    <div style="padding-left:16px">
-      <h2>Top Navigation Example</h2>
-      <p>Some content..</p>
-    </div>
-
   </div>
 </router-outlet>
-<!--
-<header>
-  <router-outlet>
-    <div *ngIf="authService.isLoggedIn$ | async">
-      <nav class="navbar">
-        <ul>
-          <li><a href="/StartingPage">Home</a></li>
-          <li><a href="/items">Auctions</a></li>
-          <li><a href="/users/items">My Items</a></li>
-          <li><a href="/users/items">Other</a></li>
-          <li><a href="/StartingPage">Profile</a>
-            <ul>
-              <li><button type="submit" (click)="logout()"> Logout </button></li>
-              <li><a href="/StartingPage">View Profile</a>
-            </ul>
-          </li>
 
-        </ul>
-      </nav>
-    </div>
-  </router-outlet>
-</header>
--->

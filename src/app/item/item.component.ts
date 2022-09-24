@@ -15,7 +15,18 @@ export class ItemComponent implements OnInit {
   constructor(private service: ItemService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getItems().subscribe(items => this.items = items);
+    this.service.getItems().subscribe(items =>
+    {
+      this.items = items
+      for(let item of this.items) {
+        const date = new Date();
+        const itemDate = new Date(item.ends!);
+        if(itemDate < date ){
+          item.auctionEnds= true;
+          this.service.editItem(item).subscribe();
+        }
+      }
+    });
   }
 
   showitem(item: Item):void {
@@ -23,4 +34,5 @@ export class ItemComponent implements OnInit {
     this.service.storeItem(item);
     this.router.navigate(["/items/show"]);
   }
+
 }
