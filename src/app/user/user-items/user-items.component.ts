@@ -101,7 +101,7 @@ export class UserItemsComponent implements OnInit {
       currently: item.currently,
       started: item.started,
       ends: item.ends,
-      auctionStarted: false,
+      auctionStarted: item.auctionStarted,
       auctionEnds: false,
     }).subscribe();
 
@@ -139,6 +139,11 @@ export class UserItemsComponent implements OnInit {
   startAuction(item: Item) {
     let dateTime = new Date();
     this.submitted = true;
+
+    if(this.startitemForm.invalid){
+      return;
+    }
+
     this.itemService.editItem({
       id: item.id,
       name: item.name,

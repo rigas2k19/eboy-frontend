@@ -7,7 +7,7 @@
         <!--
         <img src="..." class="card-img-top" alt="...">
         -->
-        <div class="card-body" *ngIf="item.auctionEnds == false">
+        <div class="card-body">
           <h5 class="card-title">{{item.name}}</h5>
           <p class="card-text">{{item.description}}</p>
         </div>
@@ -44,7 +44,7 @@
           </div>
         </div>
         <button type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false" (click)="showStart(item)">Start auction</button>
-        <button id="btn" type="submit" class="btn btn-primary" *ngIf="item.auctionStarted == false || item.number_of_bids == 0" (click)="showEdit(item)">Edit Auction</button>
+        <button id="btn" type="submit" class="btn btn-primary" *ngIf="(item.auctionStarted == false || item.number_of_bids == 0) && item.auctionEnds == false" (click)="showEdit(item)">Edit Auction</button>
         <button id="delete"  class="btn btn-primary" *ngIf="item.auctionStarted == false || item.number_of_bids == 0" (click)="deleteItem(item)">Delete</button>
 
       </div>
@@ -55,7 +55,7 @@
 <div class="overlay" *ngIf="show == true ">
   <div class="popup">
     <div class="modal-body">
-      <form [formGroup]="edititemForm" (ngSubmit)="editAuction(item)" novalidate>
+      <form [formGroup]="edititemForm" (ngSubmit)="editAuction(item)">
         <div class="form-group">
           <label for="name">Item name</label>
           <div class="input-group">
@@ -366,7 +366,7 @@
 <div class="overlay" *ngIf="startshow == true ">
   <div class="popup">
     <div class="modal-body">
-      <form [formGroup]="startitemForm" (ngSubmit)="startAuction(item)" novalidate>
+      <form [formGroup]="startitemForm" (ngSubmit)="startAuction(item)">
         <div class="form-group">
           <label for="ending_time">Ending Time </label>
           <div class="input-group">

@@ -64,7 +64,9 @@ import { ItemsBoughtComponent } from './user/items-bought/items-bought.component
     MatFormFieldModule,
     MatSelectModule,
     Ng2SearchPipeModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [JwtInterceptorProvider, UserService, HttpClient],
   bootstrap: [AppComponent]
