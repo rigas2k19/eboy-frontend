@@ -11,15 +11,10 @@
       <a routerLink="/items" class="route">Auctions</a>
       <a href="/users/items">My Items</a>
       <a href="/users/bought">Items Bought</a>
-      <a href="#contact">Contact</a>
-      <a href="#profile">Profile
-        <ul>
-          <li><a href="#history"> History </a></li>
-          <li><a><button type="submit" (click)="logout()" > Logout </button></a></li>
-        </ul>
-      </a>
+      <a href="/messages"> Messages </a>
+      <a><button type="submit" (click)="logout()" > Logout </button></a>
     </nav>
-
+    Incoming : {{this.incoming}}
   </div>
 </router-outlet>
 

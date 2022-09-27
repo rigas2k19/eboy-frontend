@@ -5,8 +5,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import {UserService} from "../../services/user.service";
 import {User} from "../../model/user";
-import {Observable} from "rxjs";
-
 
 @Component({
   selector: 'app-login',
@@ -50,7 +48,13 @@ export class LoginComponent implements OnInit {
           .subscribe(
             response => {
               console.log(response);
-              this.router.navigate(['/StartingPage']);
+              this.router.navigate(['/StartingPage'])
+                .then(() => {
+                    window.location.reload();
+                  }
+                );
+              // save username to localstorage
+              localStorage.setItem('username', this.model.username);
             }
           );
       }

@@ -8,9 +8,8 @@ import {AuthenticationService} from "../../services/authentication.service";
 })
 export class StartingPageComponent implements OnInit {
 
-  constructor(public authService: AuthenticationService) { }
+  constructor(public authService: AuthenticationService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

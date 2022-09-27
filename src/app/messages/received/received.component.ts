@@ -22,6 +22,8 @@ export class ReceivedComponent implements OnInit {
 
     console.log('name: ' + decodedJWT.username);    // get username of user that is logged in
     this.username = decodedJWT.username;
+    */
+    this.username = localStorage.getItem('username')!;
 
     this.messageservice.getMessagesReceived(this.username).subscribe(receivedMessages => {
       this.receivedMessages = receivedMessages;

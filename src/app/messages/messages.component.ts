@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Message} from "../model/message";
 import {MessageService} from "../services/message.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-messages',
@@ -8,13 +9,11 @@ import {MessageService} from "../services/message.service";
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  sender!: String;
-  receiver!: String;
   receivedMessages: Message[] = [];
   sentMessages: Message[] = [];
   username!: string
 
-  constructor(private messageservice: MessageService) { }
+  constructor(private messageservice: MessageService, private router:Router) { }
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
@@ -26,5 +25,15 @@ export class MessagesComponent implements OnInit {
 
     this.messageservice.getMessagesSent(this.username).subscribe(sentMessages => this.sentMessages = sentMessages);
 
+  }
+
+  goToSent(){
+    this.router.navigate(['/messages/sent']);
+  }
+
+  goToReceived(){
+    this.router.navigate(['/messages/received']).then(() => {
+      window.location.reload();
+    });
   }
 }

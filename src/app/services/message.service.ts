@@ -8,7 +8,6 @@ import {Observable} from "rxjs";
 })
 export class MessageService {
   private messageUrl = 'https://localhost:8443/messages';
-  private username!:string;
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +30,15 @@ export class MessageService {
 
   getMessagesSentBy(sender: string, receiver: string): Observable<Message[]>{
     return this.http.get<Message[]>(this.messageUrl + "/" + sender + "/" + receiver);
+  }
+
+// /messages/unread/{username}
+  getNumberOfIncoming(username: string): Observable<number>{
+    return this.http.get<number>(this.messageUrl + "/unread/" + username);
+  }
+
+  editMessage(message: Message): Observable<Message>{
+    return this.http.put<Message>(this.messageUrl + "/received/" + message.id, message);
   }
 
 }
