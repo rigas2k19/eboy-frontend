@@ -12,3 +12,14 @@
   overflow-y: scroll;
   margin: 0 auto;
 }
+
+.delete{
+  transform: scale(0.7);
+  position:absolute;
+  top:0;
+  right:0;
+}
+
+.delete:hover {
+  background-color: #bd0000;
+}

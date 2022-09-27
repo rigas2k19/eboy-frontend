@@ -21,9 +21,38 @@
           <li class="list-group-item">Started: {{item.started}} </li>
           <li class="list-group-item">Ends: {{item.ends}} </li>
           <li class="list-group-item">Seller: {{item.sellerUsername}} </li>
-          <li class="list-group-item"><button type="submit" (click)="goToMessages()"> Contact Seller </button> </li>
+          <li class="list-group-item"><button type="submit" (click)="showMessagePopUp(item.sellerUsername!)"> Contact Seller </button> </li>
         </ol>
       </div>
     </div>
   </ul>
+</div>
+
+
+<div  class="overlay" *ngIf="messagePopUp">
+  <div class="popup">
+    <div class="container">
+      <form  [formGroup]="addMessageForm" (ngSubmit)="sendMessage()">
+        <div class="form-group">
+          <label for="receiverUsername">Send To</label><br>
+          <input type="text" formControlName="receiver" id="receiverUsername"  placeholder="Enter receiver username" >
+          <div *ngIf="submitted && form.receiver!.errors" class ="alert">
+            <div *ngIf="receiver!.errors?.['required']">
+              Username is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="messageArea">Message</label><br>
+          <textarea formControlName="messageText" id="messageArea" rows="6" placeholder="Enter message" ></textarea>
+          <div *ngIf="submitted && form.messageText!.errors" class ="alert">
+            <div *ngIf="messageText!.errors?.['required']">
+              Provide text
+            </div>
+          </div>
+        </div>
+        <button type="submit" mat-raised-button mat-button color="primary">Send</button>
+      </form>
+    </div>
+  </div>
 </div>

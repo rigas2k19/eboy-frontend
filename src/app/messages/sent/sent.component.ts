@@ -53,10 +53,11 @@ export class SentComponent implements OnInit {
       senderUsername: this.username,
       receiverUsername:this.receiver!.value,
       isRead: false}).subscribe();
+
+    location.reload();
   }
 
   deleteMessage(id:number){
-    console.log("deleting message with id " + id);
     this.messageservice.deleteMessage(id).subscribe(message=>this.message);
     location.reload();
   }

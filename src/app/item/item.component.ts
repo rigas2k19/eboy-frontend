@@ -33,6 +33,7 @@ export class ItemComponent implements OnInit {
     //call service to store item
     this.service.storeItem(item);
     this.router.navigate(["/items/show"]);
+    location.reload();
   }
 
 }

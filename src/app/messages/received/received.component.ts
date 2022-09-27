@@ -10,13 +10,15 @@ import {MessageService} from "../../services/message.service";
 export class ReceivedComponent implements OnInit {
   receivedMessages: Message[] = [];
   username!: string
+  message!: Message;
 
 
   constructor(private messageservice: MessageService) {
   }
 
   ngOnInit(): void {
-
+    
+    /*
     let token = localStorage.getItem('token');
     let decodedJWT = JSON.parse(window.atob(token!.split('.')[1]));
 
@@ -27,6 +29,24 @@ export class ReceivedComponent implements OnInit {
 
     this.messageservice.getMessagesReceived(this.username).subscribe(receivedMessages => {
       this.receivedMessages = receivedMessages;
+      //edit each received Message to mark it read.
+      for(let i=0; i<receivedMessages.length; i++){
+        if(!(receivedMessages[i].isRead)){
+          //if message is not read, mark it read.
+          this.messageservice.editMessage({
+            id: receivedMessages[i].id,
+            message: receivedMessages[i].message,
+            receiverUsername: receivedMessages[i].receiverUsername,
+            senderUsername: receivedMessages[i].senderUsername,
+            isRead: true,
+          }).subscribe();
+        }
+      }
     });
+  }
+
+  deleteMessage(id:number){
+    this.messageservice.deleteMessage(id).subscribe(message=>this.message);
+    location.reload();
   }
 }

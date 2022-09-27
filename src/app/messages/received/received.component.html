@@ -4,6 +4,9 @@
       <div class="card-body">
         <h5 class="card-title">From: {{message.senderUsername}}</h5>
         <p class="card-text">{{message.message}}</p>
+        <button class="delete" mat-fab color="warn" (click)="deleteMessage(message.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
     </div>
   </ul>
